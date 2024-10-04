@@ -1,0 +1,1 @@
+/* File for defining the global types of the app */
