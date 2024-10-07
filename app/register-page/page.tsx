@@ -3,6 +3,8 @@
 /* Imports */
 import { useState } from "react";
 
+import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -92,9 +94,12 @@ export default function RegisterPage() {
 
         {/* Submit button */}
         <div className="w-2/3 flex justify-center">
-          <Button type="submit" onClick={handleRegister} className="my-4 bg-[#ff6725] text-black">
-            ¿Registrar datos?
-          </Button>
+          {/* TODO: If all info not complete do not link to next page */}
+          <Link href="/offers-page">
+            <Button type="submit" onClick={handleRegister} className="my-4 bg-[#ff6725] text-black">
+              ¿Registrar datos?
+            </Button>
+          </Link>
         </div>
       </div>
     </main>
