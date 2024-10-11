@@ -3,15 +3,12 @@
 /* Imports */
 import { useState } from "react";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 import { JobOffer } from "../components/JobOffer";
 
 import { OfferType } from "../types";
-import { list } from "postcss";
 
 /* Mock offers */
 const listOfOffersExample = [
@@ -19,69 +16,147 @@ const listOfOffersExample = [
     id: 1,
     companyName: "Google",
     title: "Frontend Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec purus nec elit luctus pharetra. Aenean auctor, metus eget tincidunt feugiat, justo odio ultricies nunc, nec ultricies nunc odio nec libero. Nullam nec nunc nec libero.",
-    location: "Remote",
-    salary: "100k",
-    requirements: ["React", "TypeScript", "CSS"]
+    location: "Barcelona",
+    schedule: "Full-time",
+    contractType: "Indefinite",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl nec sem aliquam ultricies. Nulla facilisi. Proin auctor, libero et ultricies aliquet, nunc libero tincidunt libero, nec ultricies libero nunc nec libero.",
+    functions: [
+      "Desenvolupament de la interfície d'usuari",
+      "Optimització de la velocitat de càrrega",
+      "Implementació de noves funcionalitats"
+    ],
+    requirements: [
+      "Experiència prèvia en desenvolupament web",
+      "Coneixements de ReactJS",
+      "Coneixements de HTML, CSS i JavaScript"
+    ]
   },
   {
     id: 2,
-    companyName: "Facebook",
+    companyName: "Amazon",
     title: "Backend Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec purus nec elit luctus pharetra. Aenean auctor, metus eget tincidunt feugiat, justo odio ultricies nunc, nec ultricies nunc odio nec libero. Nullam nec nunc nec libero.",
-    location: "Remote",
-    salary: "100k",
-    requirements: ["NodeJS", "MongoDB", "Express"]
+    location: "Madrid",
+    schedule: "Full-time",
+    contractType: "Indefinite",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl nec sem aliquam ultricies. Nulla facilisi. Proin auctor, libero et ultricies aliquet, nunc libero tincidunt libero, nec ultricies libero nunc nec libero.",
+    functions: [
+      "Desenvolupament de la interfície d'usuari",
+      "Optimització de la velocitat de càrrega",
+      "Implementació de noves funcionalitats"
+    ],
+    requirements: [
+      "Experiència prèvia en desenvolupament web",
+      "Coneixements de ReactJS",
+      "Coneixements de HTML, CSS i JavaScript"
+    ]
   },
   {
     id: 3,
-    companyName: "Amazon",
+    companyName: "Apple",
     title: "Fullstack Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec purus nec elit luctus pharetra. Aenean auctor, metus eget tincidunt feugiat, justo odio ultricies nunc, nec ultricies nunc odio nec libero. Nullam nec nunc nec libero.",
-    location: "Remote",
-    salary: "100k",
-    requirements: ["React", "NodeJS", "MongoDB"]
+    location: "Barcelona",
+    schedule: "Full-time",
+    contractType: "Indefinite",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl nec sem aliquam ultricies. Nulla facilisi. Proin auctor, libero et ultricies aliquet, nunc libero tincidunt libero, nec ultricies libero nunc nec libero.",
+    functions: [
+      "Desenvolupament de la interfície d'usuari",
+      "Optimització de la velocitat de càrrega",
+      "Implementació de noves funcionalitats"
+    ],
+    requirements: [
+      "Experiència prèvia en desenvolupament web",
+      "Coneixements de ReactJS",
+      "Coneixements de HTML, CSS i JavaScript"
+    ]
   },
   {
     id: 4,
-    companyName: "Apple",
-    title: "Mobile Developer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec purus nec elit luctus pharetra. Aenean auctor, metus eget tincidunt feugiat, justo odio ultricies nunc, nec ultricies nunc odio nec libero. Nullam nec nunc nec libero.",
-    location: "Remote",
-    salary: "100k",
-    requirements: ["Swift", "Objective-C", "XCode"]
+    companyName: "Microsoft",
+    title: "DevOps Engineer",
+    location: "Barcelona",
+    schedule: "Full-time",
+    contractType: "Indefinite",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl nec sem aliquam ultricies. Nulla facilisi. Proin auctor, libero et ultricies aliquet, nunc libero tincidunt libero, nec ultricies libero nunc nec libero.",
+    functions: [
+      "Desenvolupament de la interfície d'usuari",
+      "Optimització de la velocitat de càrrega",
+      "Implementació de noves funcionalitats"
+    ],
+    requirements: [
+      "Experiència prèvia en desenvolupament web",
+      "Coneixements de ReactJS",
+      "Coneixements de HTML, CSS i JavaScript"
+    ]
   },
   {
     id: 5,
-    companyName: "Microsoft",
-    title: "DevOps Engineer",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec purus nec elit luctus pharetra. Aenean auctor, metus eget tincidunt feugiat, justo odio ultricies nunc, nec ultricies nunc odio nec libero. Nullam nec nunc nec libero.",
-    location: "Remote",
-    salary: "100k",
-    requirements: ["Docker", "Kubernetes", "CI/CD"]
+    companyName: "Facebook",
+    title: "Data Scientist",
+    location: "Barcelona",
+    schedule: "Full-time",
+    contractType: "Indefinite",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac nisl nec sem aliquam ultricies. Nulla facilisi. Proin auctor, libero et ultricies aliquet, nunc libero tincidunt libero, nec ultricies libero nunc nec libero.",
+    functions: [
+      "Desenvolupament de la interfície d'usuari",
+      "Optimització de la velocitat de càrrega",
+      "Implementació de noves funcionalitats"
+    ],
+    requirements: [
+      "Experiència prèvia en desenvolupament web",
+      "Coneixements de ReactJS",
+      "Coneixements de HTML, CSS i JavaScript"
+    ]
   }
 ];
 
 /* Main component */
 export default function OffersPage() {
+  const router = useRouter();
+
   /* Variables  */
   const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
   //setOffers(listOfOffersExample); /* Despres les ofertes s'agafen de la DB */
+  const [currentIndex, setCurrentIndex] = useState(offers.length - 1);
 
   /* Functions */
 
+  /* Swipe functions */
+  const onSwipe = (direction: string) => {
+    if (direction === "right") {
+        console.log(`Liked: ${offers[currentIndex].title}`);
+    } else if (direction === "left") {
+        console.log(`Passed on: ${offers[currentIndex].title}`);
+    }
+
+    /* TODO: Guardar ofertes amb like o pass a la DB */
+    
+
+    const nextIndex = currentIndex - 1;
+    setTimeout(() => {
+      if (nextIndex < 0) {
+        console.log("No more offers");
+        router.push("/thankyou-page");
+      } else {
+        setCurrentIndex(nextIndex);
+      }
+    }, 500);
+  };
+
   return (
-    <main>
-      <p>Offers page</p>
+    <main className="h-screen w-screen bg-blue-400 flex justify-center items-center">
+      {/* <p>Offers page</p> */}
 
       {/* TODO: Background styles */}
 
 
+      {/* <JobOffer offer={listOfOffersExample[0]} /> */}
       {/* TODO: List all JobOffers (map) */}
-      <JobOffer offer={listOfOffersExample[0]} />
+      {currentIndex >= 0 && (
+        <JobOffer offer={offers[currentIndex]} onSwipe={onSwipe} />
+      )}
     </main>
   );
 };
 /* {offers.map((offer) => (
-  <JobOffer key={offer.id} offer={offer} />
+  <JobOffer key={offer.id} offer={offer} onSwipe={onSwipe}/>
 ))} */
