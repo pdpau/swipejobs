@@ -8,6 +8,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Router } from 'lucide-react';
+import { useRouter } from 'next/navigation'
 /* Main component */
 export default function RegisterPage() {
   /* Variables */
@@ -15,16 +17,18 @@ export default function RegisterPage() {
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
   const [tlf, setTlf] = useState("");
+  const [userId, setUserId] = useState(null);
+  const router = useRouter()
 
   //Variables funcionament SupaBase
-  const[loading, setLoading] = useState(false)
-  
+  const [loading, setLoading] = useState(false)
+
 
   /* Functions */
   const handleRegister = async () => {
     /* TODO: Add user to DB */
-//  /* TODO: Exception if email already registered */
-//  /* TODO: ... */
+    //  /* TODO: Exception if email already registered */
+    //  /* TODO: ... */
     console.log("Registering user...");
     console.log("Name:", name);
     console.log("Surname:", surname);
@@ -32,15 +36,29 @@ export default function RegisterPage() {
     console.log("Tlf:", tlf);
 
     const { error } = await supabase
-    .from('users')
-    .insert({ username: name, surname: surname, created_at:new Date(), mail: email, telephone:tlf,  })
+      .from('users')
+      .insert({ username: name, surname: surname, created_at: new Date(), mail: email, telephone: tlf, })
 
     if (error) {
       console.error('Error registering user:', error.message);
       // Maneja el error si el email ya está registrado o cualquier otro problema
     } else {
+        const { data, error } = await supabase
+        .from('users')
+        .select()
+        .eq('mail', email); // Filtrar por email
+      if (error) {
+        console.error('Error selecting user by email:', error.message);
+      } else {
+        const insertedUserId = data[0].id;
+        setUserId(insertedUserId);
+        // Guardar el ID en localStorage
+          localStorage.setItem('userId', insertedUserId);
+          console.log('Data Retrieved:', data);
+          console.log('User registered with ID:', insertedUserId);
+          router.push('/offers-page'); // Redirigir a /offers-page
+      }
       console.log('User registered successfully:');
-      // Puedes redirigir a otra página si el registro fue exitoso
     }
   };
 
@@ -54,7 +72,7 @@ export default function RegisterPage() {
 
         {/* Form */}
         <div className="w-2/3">
-          <Input 
+          <Input
             className="bg-[#c9c9c9] text-muted-foreground"
             type="text"
             name="name"
@@ -64,7 +82,7 @@ export default function RegisterPage() {
           />
         </div>
         <div className="w-2/3">
-          <Input 
+          <Input
             className="bg-[#c9c9c9] text-muted-foreground"
             type="text"
             name="surname"
@@ -74,7 +92,7 @@ export default function RegisterPage() {
           />
         </div>
         <div className="w-2/3">
-          <Input 
+          <Input
             className="bg-[#c9c9c9] text-muted-foreground"
             type="email"
             name="email"
@@ -84,7 +102,7 @@ export default function RegisterPage() {
           />
         </div>
         <div className="w-2/3">
-          <Input 
+          <Input
             className="bg-[#c9c9c9] text-muted-foreground"
             type="tel"
             name="tlf"
@@ -98,12 +116,16 @@ export default function RegisterPage() {
 
         {/* Submit button */}
         <div className="w-2/3 flex justify-center">
-          <Button type="submit" onClick={handleRegister} className="my-4 bg-[#ff6725] text-black">
-            ¿Registrar datos?
-          </Button>
+          {/* <Link href="/offers-page"> */}
+            <Button type="submit" onClick={handleRegister} className="my-4 bg-[#ff6725] text-black">
+              ¿Registrar datos?
+            </Button>
+          {/* </Link> */}
         </div>
       </div>
     </main>
   );
 }
+
+
 
