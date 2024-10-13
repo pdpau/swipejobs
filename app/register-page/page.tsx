@@ -103,7 +103,7 @@ export default function RegisterPage() {
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setSurname(e.target.value)}
           />
           <Separator />
           <Input
@@ -117,7 +117,7 @@ export default function RegisterPage() {
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <Separator />
           <Input
@@ -131,7 +131,7 @@ export default function RegisterPage() {
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setTlf(e.target.value)}
           />
           <Separator />
         </div>
@@ -213,6 +213,14 @@ export default function RegisterPage() {
         {/* Usar pseudo-elemento para la ola */}
         <div className="wave"></div>
       </div>
+      <style jsx>
+        {`
+          .wave {
+            /* TODO: Make it a waving wave */
+
+          }
+        `}
+      </style>
     </main>
   );
 }
