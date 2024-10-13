@@ -1,10 +1,11 @@
 "use client";
 
 /* Imports */
-import { useState } from "react";
+import { useEffect, useState } from 'react';
 
 import { useRouter } from "next/navigation";
 
+import { supabase } from '../../lib/supabaseClient';
 
 import { JobOffer } from "../components/JobOffer";
 
@@ -113,6 +114,40 @@ const listOfOffersExample = [
 export default function OffersPage() {
   const router = useRouter();
 
+  const [userId, setUserId] = useState<number | null>(null); // userId as number or null
+
+  useEffect(() => {
+    // Recuperar el ID del usuario desde localStorage y convertir a número
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      setUserId(parseInt(storedUserId)); // Convert to number
+    }
+  }, []);
+
+  const [offersBD, setOffersBD] = useState<OfferType[]>([]); // Aquí se guardarán las ofertas
+  const [loading, setLoading] = useState(true); // Estado para mostrar un loader si es necesario
+
+  useEffect(() => {
+    const fetchOffers = async () => {
+      const { data, error } = await supabase
+        .from('Offers') // Asegúrate de que este sea el nombre exacto de tu tabla
+        .select(); // Selecciona todas las columnas
+
+      if (error) {
+        console.error("Error fetching offers:", error.message);
+      } else {
+        setOffersBD(data); // Guarda las ofertas en el estado
+        console.log(data)
+      }
+
+      setLoading(false); // Oculta el loader una vez que los datos han sido cargados
+    };
+
+    fetchOffers();
+  }, []);
+
+
+
   /* Variables  */
   const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
   //setOffers(listOfOffersExample); /* Despres les ofertes s'agafen de la DB */
@@ -154,6 +189,10 @@ export default function OffersPage() {
       {currentIndex >= 0 && (
         <JobOffer offer={offers[currentIndex]} onSwipe={onSwipe} />
       )}
+      <div>
+      <h1>Página de ejemplo</h1>
+      {userId !== null ? <p>ID del usuario: {userId}</p> : <p>Cargando...</p>}
+      </div>
     </main>
   );
 };

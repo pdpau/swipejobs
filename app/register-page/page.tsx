@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-/* Imports */
+import { supabase } from '../../lib/supabaseClient';
 import { useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
@@ -15,7 +16,6 @@ import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, Dialog
 
 /* Main component */
 export default function RegisterPage() {
-
   /* Variables */
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
@@ -24,21 +24,47 @@ export default function RegisterPage() {
   const [conditionsAccepted, setConditionsAccepted] = useState(false);
 
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const router = useRouter();
+
 
   /* Functions */
-  const handleRegister = () => {
+  const handleRegister = async () => {
     /* TODO: Add user to DB */
-    /* TODO: Exception if email already registered */
-    /* TODO: ... */
-
-
+    //  /* TODO: Exception if email already registered */
+    //  /* TODO: ... */
     console.log("Registering user...");
     console.log("Name:", name);
     console.log("Surname:", surname);
     console.log("Email:", email);
     console.log("Tlf:", tlf);
-  };
 
+    const { error } = await supabase
+      .from('users')
+      .insert({ username: name, surname: surname, created_at: new Date(), mail: email, telephone: tlf, })
+
+    if (error) {
+      console.error('Error registering user:', error.message);
+      // Maneja el error si el email ya está registrado o cualquier otro problema
+    } else {
+        const { data, error } = await supabase
+        .from('users')
+        .select()
+        .eq('mail', email); // Filtrar por email
+      if (error) {
+        console.error('Error selecting user by email:', error.message);
+      } else {
+        const insertedUserId = data[0].id;
+        setUserId(insertedUserId);
+        // Guardar el ID en localStorage
+          localStorage.setItem('userId', insertedUserId);
+          console.log('Data Retrieved:', data);
+          console.log('User registered with ID:', insertedUserId);
+          router.push('/offers-page'); // Redirigir a /offers-page
+      }
+      console.log('User registered successfully:');
+    }
+  };
 
   return (
     /* TODO: Responsive */
@@ -187,14 +213,9 @@ export default function RegisterPage() {
         {/* Usar pseudo-elemento para la ola */}
         <div className="wave"></div>
       </div>
-      <style jsx>
-        {`
-          .wave {
-            /* TODO: Make it a waving wave */
-
-          }
-        `}
-      </style>
     </main>
   );
-};
+}
+
+
+
