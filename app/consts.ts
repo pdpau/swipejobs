@@ -1,3 +1,4 @@
+import { OfferType } from "./types";
 
 
 
@@ -100,4 +101,4 @@ export const listOfOffersExample = [
             "Coneixements de HTML, CSS i JavaScript"
         ]
     }
-] as const;
+] as OfferType[];
