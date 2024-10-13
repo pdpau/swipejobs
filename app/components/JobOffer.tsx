@@ -97,7 +97,7 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                 </div>
 
                 {/* Descripción de la empresa y la oferta */}
-                <div className="h-[35%] mb-2 flex">
+                <div className="h-[45%] mb-2 flex">
                     <div className="w-full px-4 bg-slate-600 rounded-xl overflow-auto no-scrollbar">
                         <h3 className="text-pink-400 text-lg my-1">Descripció</h3>
                         <p className="text-xs">{offer.description}</p>
@@ -105,7 +105,7 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                 </div>
 
                 {/* Funciones y Requisitos */}
-                <div className="h-[45%] mb-2 flex justify-between">
+                <div className="h-[35%] mb-2 flex justify-between">
                     <div className="w-1/2 mr-1 px-4 bg-slate-800 rounded-xl overflow-auto no-scrollbar">
                         <h3 className="text-pink-400 text-lg my-2">Funcions</h3>
                         <ul className="list-disc pl-5 text-xs">
