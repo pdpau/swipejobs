@@ -10,6 +10,8 @@ import { OfferType } from "../types";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
+import { ListItem } from "./ListItem";
+
 /* Props */
 type Props = {
     dbOffer: any;
@@ -104,14 +106,15 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                     </div>
                 </div>
 
-                {/* Funciones y Requisitos */}
+                {/* Funciones y Requisitos */} {/* TODO: Crear component listItem i donar estils a la llista */}
                 <div className="h-[35%] mb-2 flex justify-between">
                     <div className="w-1/2 mr-1 px-4 bg-slate-800 rounded-xl overflow-auto no-scrollbar">
                         <h3 className="text-pink-400 text-lg my-2">Funcions</h3>
                         <ul className="list-disc pl-5 text-xs">
                             {offer.functions.map((func, index) => (
-                                <li key={index}>{func}</li>
+                                <ListItem key={index} item={func} />
                             ))}
+                            {/* <li key={index}>{func}</li> */}
                         </ul>
                     </div>
                     <div className="w-1/2 ml-1 px-4 bg-slate-700 rounded-xl overflow-auto no-scrollbar">
