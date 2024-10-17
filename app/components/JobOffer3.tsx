@@ -73,52 +73,50 @@ export function JobOffer3({ dbOffer, onSwipe }: Props) {
             onSwipe={onSwipe}
             preventSwipe={["up", "down"]}
         >
-            <div className="w-full h-full max-w-[350px] max-h-[600px] flex flex-col justify-between text-white"> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
+            <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-white")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
                 {/* Logo o nombre de la empresa */}
-                <div className="h-[15%] px-6 py-4 flex justify-between items-center bg-slate-600 rounded-t-3xl">
-                    <h2 className="text-3xl font-bold text-white max-w-[60%]">{offer.companyName}</h2>
-                    <div className="w-[2px] h-8 bg-pink-400"></div> {/* Separador vertical grueso */}
-                    <span className="text-lg font-bold text-gray-400 max-w-[40%]">{offer.title}</span>
+                <div className={cn("h-[18%] px-6 py-4 space-x-4", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
+                    <h2 className={cn("text-2xl font-extrabold line-clamp-2", "w-1/2 max-w-[60%]", "text-white")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
+                    <div className="w-[4px] h-8 bg-black"></div> {/* Separador vertical grueso */}
+                    <span className={cn("text-end text-xl font-bold line-clamp-2", "w-1/2 max-w-[40%]", "text-gray-400")}>{offer.title}</span>
                 </div>
 
-                <Separator className="bg-pink-500"/>
-
                 {/* Detalles de la oferta */} {/* TODO: Revisar iconos */}
-                <div className="h-[12%] px-4 pt-2 space-x-1 flex justify-around items-center text-base">
+                <div className={cn("h-[12%] px-4 pt-2 space-x-1", "flex justify-around items-center", "text-md font-medium")}>
                     <div className="flex items-center">
                         <i className="mr-1"><TiLocation /></i>
-                        <span className="text-gray-300">{offer.location}</span>
+                        <span className="text-gray-400">{offer.location}</span>
                     </div>
-                    <div className="w-[2px] h-6 bg-pink-400"></div> {/* Separador vertical grueso */}
+                    <div className="w-[2px] h-6 bg-black"></div> {/* Separador vertical grueso */}
                     <div className="flex items-center">
                         <i className="mr-1"><FaFileContract /></i>
-                        <span className="text-gray-300">{offer.contractType}</span>
+                        <span className="text-gray-400">{offer.contractType}</span>
                     </div>
-                    <div className="w-[2px] h-6 bg-pink-400"></div> {/* Separador vertical grueso */}
+                    <div className="w-[2px] h-6 bg-black"></div> {/* Separador vertical grueso */}
                     <div className="flex items-center">
                         <i className="mr-1"><BsFillClockFill /></i>
-                        <span className="text-gray-300">{offer.schedule}</span>
+                        <span className="text-gray-400">{offer.schedule}</span>
                     </div>
                 </div>
 
                 {/* Descripción de la empresa y la oferta */}
-                <div className="h-[53%] px-6 py-2 mb-2 flex flex-col">
-                    <h3 className=" text-pink-400 text-xl font-bold mb-1">Descripció</h3>
-                    <Separator className="bg-pink-500 mb-1"/>
-                    <p className="text-md leading-relaxed text-gray-200 overflow-auto no-scrollbar">
+                <div className={cn("h-[50%] px-6 py-2 mb-2", "flex flex-col")}>
+                    <h3 className="text-gray-100 text-xl font-bold mb-1">Descripció</h3>
+                    <Separator className="bg-black mb-1"/>
+                    <p className="text-md font-medium leading-relaxed text-gray-300 overflow-auto no-scrollbar">
                         {offer.description}
                     </p>
                 </div>
 
                 {/* Funciones y Requisitos */}
-                <div className="h-[20%] px-6 py-4 flex justify-evenly space-x-6">
+                <div className={cn("h-[20%] px-6 py-4 space-x-6", "flex justify-evenly")}>
                     {/* Funcions */}
-                    <div className="">
+                    <div>
                         <FunctionsAndRequirements list={offer.functions} title="Funcions" />
                     </div>
                     {/* Requisits */}
-                    <div className="">
-                        <FunctionsAndRequirements list={offer.requirements} title="Requisits"/>
+                    <div>
+                        <FunctionsAndRequirements list={offer.requirements} title="Requisits" />
                     </div>
                 </div>
             </div>

@@ -7,9 +7,6 @@ export const metadata: Metadata = {
 };
 
 
-/* TODO: Color lila per la web == #d406cb */
-/* TODO: Color verd per la web == #ccfe3e */
-
 export default function RootLayout({ children, }: Readonly<{children: React.ReactNode;}>) {
 
   return (

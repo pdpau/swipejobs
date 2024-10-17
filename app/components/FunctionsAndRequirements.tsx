@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 
 
+import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
@@ -32,13 +33,13 @@ export function FunctionsAndRequirements({ list, title }: Props) {
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                     {/* TODO: Estils botons + botons més grans */}
-                    <Button className={`${dialogColor} text-lg text-white rounded-lg px-4 py-2 shadow-md transition-colors`}>
+                    <Button className={`${dialogColor} text-lg font-semibold text-white rounded-lg px-4 py-2 shadow-md transition-colors`}>
                         {title}
                     </Button>
                 </DialogTrigger>
-                <DialogContent className="w-11/12 max-w-[400px] bg-slate-800 text-gray-200 rounded-2xl shadow-lg">
+                <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-800 text-gray-200 rounded-2xl shadow-lg")}>
                     <DialogHeader>
-                        <DialogTitle className={`text-2xl font-bold ${titleColor}`}>
+                        <DialogTitle className={`text-3xl font-extrabold ${titleColor}`}>
                             {title}
                         </DialogTitle>
                     </DialogHeader>
@@ -54,7 +55,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                     </div>
                     <DialogFooter>
                         <Button 
-                            className={`${dialogColor} text-white px-4 py-2 rounded-lg shadow-md transition-colors`}
+                            className={`${dialogColor} text-lg font-semibold text-white px-4 py-2 rounded-lg shadow-md transition-colors`}
                             onClick={() => setDialogOpen(false)}
                         >
                             Tancar

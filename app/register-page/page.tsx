@@ -1,6 +1,6 @@
 "use client"
 
-
+/* Imports */
 import { supabase } from '../../lib/supabaseClient';
 import { useState } from "react";
 
@@ -14,6 +14,9 @@ import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import toast, { Toaster } from 'react-hot-toast';
+
+/* Import logos */
+import LogoZ from "../public/logo_z.svg";
 
 
 /* Main component */
@@ -47,17 +50,14 @@ export default function RegisterPage() {
       toast.error('Todos los campos deben estar completos.');
       return;
     }
-
     if (!validateEmail(email)) {
       toast.error('El correo electrónico no es válido.');
       return;
     }
-
     if (!validatePhone(tlf)) {
       toast.error('El número de teléfono debe tener 9 dígitos.');
       return;
     }
-
     if (!conditionsAccepted) {
       toast.error('Debes aceptar los términos y condiciones.');
       return;
@@ -104,14 +104,22 @@ export default function RegisterPage() {
 
 
   return (
-    /* TODO: Responsive */
-
     <main className={cn("h-screen w-screen", "flex justify-center items-center", "bg-black")}>
       <div><Toaster /></div>
+
+      <LogoZ
+        className={cn(
+          "absolute top-20 left-1/2 transform -translate-x-1/2", 
+          "h-16 w-16",
+          "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+        )}
+      />
+
+      {/* Main container */}
       <div id="register-main-div" className={cn("w-full max-w-md h-3/4", "flex flex-col justify-center items-center space-y-8", "text-white")}>
         {/* Title */}
-        <h1 className="text-4xl font-bold text-center text-white"> {/* TODO: Youz style */}
-          #SwipeTalent<span className="text-[#A4FF00]">Youz</span>
+        <h1 className="text-4xl font-bold text-center text-white">
+          #SwipeTalent<span className="text-vibezgreen-400">Youz</span> {/* TODO: Logo YOUZ */}
         </h1>
 
         {/* Form */}
@@ -180,25 +188,25 @@ export default function RegisterPage() {
             id="accept-conditions"
             checked={conditionsAccepted}
             onCheckedChange={() => setConditionsAccepted(!conditionsAccepted)}
-            className="w-5 h-5 mr-2 text-[#A4FF00] bg-transparent border border-white"
+            className="w-5 h-5 mr-2 text-vibezgreen-400 bg-transparent border border-white"
           />
           <label htmlFor="accept-conditions" className="text-sm text-white">
             Accepto les condicions d'ús i la política de privacitat
-            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}> {/* TODO: ¿¿ Dialog background white or slate ?? */}
               <DialogTrigger asChild>
-                <button className="underline text-[#A4FF00]">
+                <button className="underline text-vibezgreen-400">
                   Termes i Condicions d'Ús i Política de Privacitat
                 </button>
               </DialogTrigger>
-              <DialogContent>
+              <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-100", "rounded-2xl shadow-lg")}>
                 <DialogHeader>
-                  <DialogTitle>
+                  <DialogTitle className="text-slate-950">
                     Termes i Condicions d'Ús i Política de Privacitat
                   </DialogTitle>
                 </DialogHeader>
                 {/* Contenedor scrollable */}
                 <div className="max-h-60 overflow-y-auto pr-4">
-                  <DialogDescription>
+                  <DialogDescription className="text-slate-700">
                     <ul>
                     En acceptar aquests termes i condicions, vostè consenteix que Youz Talent processi i emmagatzemi les seves dades personals per als fins descrits a continuació. Aquests termes expliquen com recollim, utilitzem i protegim la seva informació personal, en compliment amb la normativa aplicable de protecció de dades.
 
@@ -219,7 +227,7 @@ export default function RegisterPage() {
 
                 <DialogFooter>
                   <Button
-                    className="bg-[#A4FF00] text-black"
+                    className="text-md font-bold text-slate-900 bg-vibezgreen-400 hover:bg-vibezgreen-600"
                     onClick={() => { setConditionsAccepted(true); setDialogOpen(false); }}
                   >
                     Acceptar
@@ -240,7 +248,7 @@ export default function RegisterPage() {
               onClick={handleRegister}
               className={cn(
                 "w-full py-3 rounded-full",
-                "bg-[#A4FF00] hover:bg-[#8FE000] active:bg-[#6CC700]",
+                "bg-vibezgreen-800 hover:bg-vibezgreen-600 active:bg-vibezgreen-400",
                 "text-black font-bold text-lg",
                 conditionsAccepted && name && surname && email && tlf ? "cursor-pointer" : "cursor-not-allowed opacity-50"
               )}
@@ -250,34 +258,7 @@ export default function RegisterPage() {
             </Button>
           </Link>
         </div>
-
-        {/* TODO: Footer (logo vibez) */}
-        <div className="mt-10">
-          {/* <p className="text-sm text-center text-white">© 2024 Nom de la empresa. Tots els drets reservats.</p> */}
-        </div>
       </div>
-
-      {/* TODO: Background waves */}
-      {/* TODO: ¿¿¿Totes les pagines amb aquest background??? */}
-      <div className="absolute top-0 left-0 w-full h-1/6 bg-gradient-to-t from-transparent to-pink-500">
-        {/* Usar pseudo-elemento para la ola */}
-        <div className="wave"></div>
-      </div>
-      <div className="absolute bottom-0 left-0 w-full h-1/6 bg-gradient-to-b from-transparent to-pink-500">
-        {/* Usar pseudo-elemento para la ola */}
-        <div className="wave"></div>
-      </div>
-      <style jsx>
-        {`
-          .wave {
-            /* TODO: Make it a waving wave */
-
-          }
-        `}
-      </style>
     </main>
   );
-}
-
-
-
+};
