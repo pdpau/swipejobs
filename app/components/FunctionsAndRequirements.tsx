@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 
+import { ListItem } from "./ListItem";
 
 
 /* Props */
@@ -20,33 +21,40 @@ export function FunctionsAndRequirements({ list, title }: Props) {
     /* Variables */
     const [dialogOpen, setDialogOpen] = useState(false);
 
+    /* TODO: Funcions will be pink and requisits will be green */
+    /* Condicionales de estilos */
+    const isFunctions = title.toLowerCase() === "funcions";
+    const dialogColor = isFunctions ? "bg-pink-500 hover:bg-pink-600" : "bg-green-500 hover:bg-green-600";
+    const titleColor = isFunctions ? "text-pink-400" : "text-green-400";
 
     return (
         <main>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
                     {/* TODO: Estils botons + botons més grans */}
-                    <Button className="bg-pink-400 text-lg text-white rounded-lg">
+                    <Button className={`${dialogColor} text-lg text-white rounded-lg px-4 py-2 shadow-md transition-colors`}>
                         {title}
                     </Button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-11/12 max-w-[400px] bg-slate-800 text-gray-200 rounded-2xl shadow-lg">
                     <DialogHeader>
-                        <DialogTitle>{title}</DialogTitle>
+                        <DialogTitle className={`text-2xl font-bold ${titleColor}`}>
+                            {title}
+                        </DialogTitle>
                     </DialogHeader>
                     <div className="max-h-60 overflow-auto p-4"> {/* Scrollable */}
                         <DialogDescription>
-                            <ul className="list-disc pl-5 text-sm text-gray-200">
+                            <ul className="list-none">
                                 {list.map((item, index) => (
-                                    <li key={index}>{item}</li>
+                                    <ListItem key={index} item={item} color={titleColor} />
                                 ))}
-                                {/* <ListItem2 key={index} item={item} /> */}
+                                {/* <li key={index}>{item}</li> */}
                             </ul>
                         </DialogDescription>
                     </div>
                     <DialogFooter>
                         <Button 
-                            className="bg-pink-400 text-white px-4 py-2 rounded-lg"
+                            className={`${dialogColor} text-white px-4 py-2 rounded-lg shadow-md transition-colors`}
                             onClick={() => setDialogOpen(false)}
                         >
                             Tancar
