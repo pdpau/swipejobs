@@ -49,7 +49,34 @@ const config: Config = {
 					'3': 'hsl(var(--chart-3))',
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
-				}
+				},
+				/* EVENT COLOR PALETTES */
+				'vibezgreen': {
+					'50': '#f5ffe4',
+					'100': '#e7ffc4',
+					'200': '#cfff90',
+					'300': '#adff50',
+					'400': '#90ff23', /* Main Color */
+					'500': '#6ce600',
+					'600': '#52b800',
+					'700': '#3d8b00',
+					'800': '#336d07',
+					'900': '#2d5c0b',
+					'950': '#133400',
+				},
+				'vibezpink': {
+					'50': '#fff2fd',
+					'100': '#ffe3fe',
+					'200': '#ffc6fc',
+					'300': '#ff99f5',
+					'400': '#ff5ded',
+					'500': '#ff21ef',
+					'600': '#ff01fc', /* Main Color */
+					'700': '#cf00c8',
+					'800': '#a900a1',
+					'900': '#890680',
+					'950': '#5e0059',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -63,4 +90,5 @@ const config: Config = {
 	},
 	plugins: [require("tailwindcss-animate")],
 };
+
 export default config;
