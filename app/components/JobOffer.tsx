@@ -62,7 +62,7 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
             className={cn(
                 "flex justify-center items-center", 
                 "w-5/6 h-2/3 max-w-[400px] max-h-[900px]", 
-                "bg-slate-950 rounded-3xl shadow-xl",
+                "bg-slate-400 rounded-3xl shadow-xl",
                 ""
             )}
             key={offer.id}
@@ -72,8 +72,8 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
             <div className="h-full px-4 py-2 flex flex-col justify-between text-white"> {/* TODO: Escollir padding */}
                 {/* Logo o nombre de la empresa */}
                 <div className="h-[12%] mb-2 flex flex-col items-center">
-                    <h2 className="text-2xl font-bold">{offer.companyName}</h2>
-                    <p className="text-lg text-pink-400 my-1">{offer.title}</p>
+                    <h2 className="text-3xl font-bold my-auto">{offer.companyName}</h2>
+                    <p className="text-lg font-bold text-pink-400 my-auto">{offer.title}</p>
                 </div>
 
                 {/* Detalles de la oferta */}
@@ -100,30 +100,37 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
 
                 {/* Descripción de la empresa y la oferta */}
                 <div className="h-[45%] mb-2 flex">
-                    <div className="w-full px-4 bg-slate-600 rounded-xl overflow-auto no-scrollbar">
-                        <h3 className="text-pink-400 text-lg my-1">Descripció</h3>
-                        <p className="text-xs">{offer.description}</p>
+                    <div className="w-full px-4 bg-slate-600 rounded-xl">
+                        <h3 className="text-center text-pink-400 text-lg font-bold my-1">Descripció</h3>
+                        <div className="overflow-auto no-scrollbar max-h-[75%]"> {/* REVIEW: ¿¿¿¿¿ 75% ????? */}
+                            <p className="text-xs ">{offer.description}</p>
+                        </div>
                     </div>
                 </div>
 
                 {/* Funciones y Requisitos */} {/* TODO: Crear component listItem i donar estils a la llista */}
                 <div className="h-[35%] mb-2 flex justify-between">
-                    <div className="w-1/2 mr-1 px-4 bg-slate-800 rounded-xl overflow-auto no-scrollbar">
-                        <h3 className="text-pink-400 text-lg my-2">Funcions</h3>
-                        <ul className="list-disc pl-5 text-xs">
-                            {offer.functions.map((func, index) => (
-                                <ListItem key={index} item={func} />
-                            ))}
-                            {/* <li key={index}>{func}</li> */}
-                        </ul>
+                    <div className="w-1/2 mr-1 px-3 bg-slate-800 rounded-xl">
+                        <h3 className="text-center text-pink-400 text-lg font-bold my-2">Funcions</h3>
+                        <div className="overflow-auto no-scrollbar max-h-[75%]">
+                            <ul className="text-xs">
+                                {offer.functions.map((func, index) => (
+                                    <ListItem key={index} item={func} />
+                                ))}
+                                {/* <li key={index}>{func}</li> */}
+                            </ul>
+                        </div>
                     </div>
-                    <div className="w-1/2 ml-1 px-4 bg-slate-700 rounded-xl overflow-auto no-scrollbar">
-                        <h3 className="text-pink-400 text-lg my-2">Requisits</h3>
-                        <ul className="list-disc pl-5 text-xs">
-                            {offer.requirements.map((req, index) => (
-                                <li key={index}>{req}</li>
-                            ))}
-                        </ul>
+                    <div className="w-1/2 ml-1 px-3 bg-slate-700 rounded-xl">
+                        <h3 className="text-center text-pink-400 text-lg font-bold my-2">Requisits</h3>
+                        <div className="overflow-auto no-scrollbar max-h-[75%]">
+                            <ul className="text-xs">
+                                {offer.requirements.map((req, index) => (
+                                    <ListItem key={index} item={req} />
+                                ))}
+                                {/* <li key={index}>{req}</li> */}
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
