@@ -42,7 +42,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                             {title}
                         </DialogTitle>
                     </DialogHeader>
-                    <div className="max-h-60 overflow-auto p-4"> {/* Scrollable */}
+                    <div className="max-h-60 p-4 overflow-auto no-sscrollbar"> {/* Scrollable */}
                         <DialogDescription>
                             <ul className="list-none">
                                 {list.map((item, index) => (

@@ -105,7 +105,7 @@ export function JobOffer3({ dbOffer, onSwipe }: Props) {
                 <div className="h-[53%] px-6 py-2 mb-2 flex flex-col">
                     <h3 className=" text-pink-400 text-xl font-bold mb-1">Descripció</h3>
                     <Separator className="bg-pink-500 mb-1"/>
-                    <p className="text-md leading-relaxed text-gray-200 overflow-auto">
+                    <p className="text-md leading-relaxed text-gray-200 overflow-auto no-scrollbar">
                         {offer.description}
                     </p>
                 </div>
