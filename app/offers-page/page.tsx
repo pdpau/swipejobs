@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 import { supabase } from '../../lib/supabaseClient';
 
+import { cn } from '@/lib/utils';
 
 import { JobOffer } from "../components/JobOffer";
 import { JobOffer2 } from "../components/JobOffer2";
@@ -14,6 +15,9 @@ import { PaginationDots } from '../components/PaginationDots';
 
 import { OfferType } from "../types";
 import { listOfOffersExample } from "../consts";
+
+/* Import logos */
+import LogoZ from "../public/logo_z.svg";
 
 
 /* Main component */
@@ -80,8 +84,16 @@ export default function OffersPage() {
 
   return (
     <main className="h-screen w-screen bg-black flex justify-center items-center">
+      <LogoZ 
+        className={cn(
+          "absolute top-16 left-1/2 transform -translate-x-1/2", 
+          "h-16 w-16",
+          "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+        )}
+      />
+
       {loading ? (
-        <p>Cargando ofertas...</p>
+        <p className="text-white text-xl font-bold">Cargando ofertas...</p>
       ) : (
         currentIndex !== null && currentIndex >= 0 && (
           <div className="w-screen h-screen flex flex-col justify-center items-center">
