@@ -66,9 +66,9 @@ export default function OffersPage() {
       
 
       /* Actualitzem index i si no hi ha mes ofertes -> anar a thankyou-page */
-      const nextIndex = currentIndex - 1;
+      const nextIndex = currentIndex + 1;
       setTimeout(() => {
-        if (nextIndex < 0) {
+        if (nextIndex > offersBD.length - 1) { // Si no hay más ofertas
           console.log("No more offers");
           router.push("/thankyou-page");
         } else {
