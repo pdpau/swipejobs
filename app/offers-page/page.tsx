@@ -8,6 +8,10 @@ import { supabase } from '../../lib/supabaseClient';
 
 
 import { JobOffer } from "../components/JobOffer";
+import { JobOffer2 } from "../components/JobOffer2";
+import { JobOffer3 } from '../components/JobOffer3';
+import { PaginationDots } from '../components/PaginationDots';
+
 import { OfferType } from "../types";
 import { listOfOffersExample } from "../consts";
 
@@ -76,20 +80,16 @@ export default function OffersPage() {
 
   return (
     <main className="h-screen w-screen bg-black flex justify-center items-center">
-      {/* TODO: Background styles */}
-
       {loading ? (
         <p>Cargando ofertas...</p>
       ) : (
         currentIndex !== null && currentIndex >= 0 && (
-          <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} />
+          <div className="w-screen h-screen flex flex-col justify-center items-center">
+            <JobOffer3 dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} />
+            <PaginationDots totalOffers={offersBD.length} currentIndex={currentIndex} />
+          </div>
         )
       )}
-
-      {/* <div>
-        <h1>Página de ejemplo</h1>
-        {userId !== null ? <p>ID del usuario: {userId}</p> : <p>Cargando...</p>}
-      </div> */}
     </main>
   );
 };
