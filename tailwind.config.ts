@@ -9,6 +9,12 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			screens: {
+				'max-h-logo-main-first': {'raw': '(max-height: 680px)'},
+				'max-h-logo-main-second': {'raw': '(max-height: 570px)'},
+				'max-h-logo-register-first': {'raw': '(max-height: 760px)'},
+				'max-h-logo-register-second': {'raw': '(max-height: 680px)'},
+			},
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
