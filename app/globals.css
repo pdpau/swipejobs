@@ -165,6 +165,9 @@
 
 
 /* --- Söhne Font --- */
+body {
+  font-family: 'Söhne', sans-serif;
+}
 @font-face {
   font-family: 'Söhne';
   src: url('/fonts/TestSoehne/test-soehne-extraleicht.woff2') format('woff2');
