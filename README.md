@@ -3,4 +3,6 @@ https://vercel.com/home
 
 
 
-Waves credits: https://codepen.io/goodkatz/pen/LYPGxQz
+Waves credits: codepen.io/goodkatz/pen/LYPGxQz
+
+Color palettes: uicolors.app
