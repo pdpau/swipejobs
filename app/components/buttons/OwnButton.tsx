@@ -6,16 +6,19 @@ import { cn } from "@/lib/utils";
 
 type Props = {
     text: string;
+    type?: "button" | "submit"; // Tipo de botón
     fromColor: string; // Clases de Tailwind para 'from'
     viaColor?: string;  // Clases de Tailwind para 'via' (opcional)
     toColor: string;    // Clases de Tailwind para 'to'
     textColor: string;  // Clases de Tailwind para el color de texto
+    onClickFunction?: () => void; // Función a ejecutar al hacer click
 };
 
 /* Main component */
-export function OwnButton({ text, fromColor, viaColor, toColor, textColor }: Props) {
+export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor, onClickFunction }: Props) {
     return (
         <button
+            type={type}
             className={`
                 mt-2 px-[18px] py-[9px] text-center
                 transition-all duration-500 ease-in-out
@@ -27,6 +30,7 @@ export function OwnButton({ text, fromColor, viaColor, toColor, textColor }: Pro
                     ? `bg-gradient-to-r ${fromColor} ${viaColor} ${toColor}`
                     : `bg-gradient-to-r ${fromColor} ${toColor}`}
             `}
+            onClick={onClickFunction}
         >
             {text}
         </button>

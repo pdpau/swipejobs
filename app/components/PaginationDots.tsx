@@ -42,7 +42,7 @@ export function PaginationDots({ totalOffers, currentIndex }: Props) {
                                 "transition-all duration-300 ease-in-out transform"
                             )}
                         >
-                            <span className="text-md font-bold text-slate-900">{`${index+1} / ${totalOffers}`}</span>
+                            <span className="text-md font-bold text-slate-800">{`${index+1} / ${totalOffers}`}</span>
                         </div>
                     ) : (
                         // Puntos vacíos

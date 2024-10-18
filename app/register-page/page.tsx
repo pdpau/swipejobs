@@ -9,11 +9,13 @@ import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import toast, { Toaster } from 'react-hot-toast';
+
+import { GreenButton } from "../components/buttons/GreenButton";
+import { PinkButton } from "../components/buttons/PinkButton";
 
 /* Import logos */
 import LogoZ from "../public/logo_z.svg";
@@ -102,9 +104,8 @@ export default function RegisterPage() {
   };
 
 
-
   return (
-    <main className={cn("h-screen w-screen", "flex justify-center items-center", "bg-black")}>
+    <main className={cn("h-screen w-screen", "flex justify-center items-center", "bg-slate-950")}>
       <div><Toaster /></div>
 
       <LogoZ
@@ -182,7 +183,7 @@ export default function RegisterPage() {
           <Separator />
         </div>
 
-        {/* TODO: Aceptar condiciones */}
+        {/* Aceptar condiciones */}
         <div className="w-4/5 flex items-start"> {/* TODO: Quadrar a dins del width del formulari */}
           <Checkbox
             id="accept-conditions"
@@ -226,12 +227,11 @@ export default function RegisterPage() {
                 </div>
 
                 <DialogFooter>
-                  <Button
-                    className="text-md font-bold text-slate-900 bg-vibezgreen-400 hover:bg-vibezgreen-600"
-                    onClick={() => { setConditionsAccepted(true); setDialogOpen(false); }}
-                  >
-                    Acceptar
-                  </Button>
+                  <GreenButton 
+                    text="Acceptar" 
+                    type="button" 
+                    onClickFunction={() => { setConditionsAccepted(true); setDialogOpen(false); }} 
+                  />
                 </DialogFooter>
               </DialogContent>
             </Dialog>
@@ -243,19 +243,11 @@ export default function RegisterPage() {
         {/* Submit button */}
         <div className="w-4/5 flex justify-center">
           <Link href={conditionsAccepted && name && surname && email && tlf ? "/offers-page" : "#"}>
-            <Button
-              type="submit"
-              onClick={handleRegister}
-              className={cn(
-                "w-full py-3 rounded-full",
-                "bg-vibezgreen-800 hover:bg-vibezgreen-600 active:bg-vibezgreen-400",
-                "text-black font-bold text-lg",
-                conditionsAccepted && name && surname && email && tlf ? "cursor-pointer" : "cursor-not-allowed opacity-50"
-              )}
-            /* disabled={!conditionsAccepted || !name || !surname || !email || !tlf} */
-            >
-              ¿Registrar datos?
-            </Button>
+            <GreenButton 
+              text="¿Registrar datos?" 
+              type="submit" 
+              onClickFunction={handleRegister} 
+            /> {/* Working well !! */}
           </Link>
         </div>
       </div>

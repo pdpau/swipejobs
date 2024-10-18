@@ -6,7 +6,9 @@ import { useState } from "react";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+
+import { GreenButton } from "../components/buttons/GreenButton";
+import { PinkButton } from "../components/buttons/PinkButton";
 
 /* Import logos */
 import Vibez from "../public/vibez.svg";
@@ -39,11 +41,9 @@ export default function ThankYouPage() {
         <p className="text-center text-xl text-slate-800">
           T'enviarem el recull d'ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
         </p>
-        <div className="text-center mt-6"> {/* TODO: Button styles */}
+        <div className="text-center mt-6">
           <Link href="/">
-            <button className="text-lg font-semibold text-slate-900 rounded-lg px-4 py-2 shadow-md bg-vibezgreen-400 hover:bg-vibezgreen-600">
-              Tornar a la pàgina principal
-            </button>
+            <GreenButton text="Tornar a la pàgina principal" type="button" />
           </Link>
         </div>
       </div>
