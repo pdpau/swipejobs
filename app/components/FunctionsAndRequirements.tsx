@@ -25,8 +25,8 @@ export function FunctionsAndRequirements({ list, title }: Props) {
     /* TODO: Funcions will be pink and requisits will be green */
     /* Condicionales de estilos */
     const isFunctions = title.toLowerCase() === "funcions";
-    const dialogColor = isFunctions ? "bg-pink-500 hover:bg-pink-600" : "bg-green-500 hover:bg-green-600";
-    const titleColor = isFunctions ? "text-pink-400" : "text-green-400";
+    const dialogColor = isFunctions ? "bg-vibezpink-600 hover:bg-vibezpink-700" : "bg-vibezgreen-400 hover:bg-vibezgreen-500";
+    const titleColor = isFunctions ? "text-vibezpink-600" : "text-vibezgreen-400";
 
     return (
         <main>
