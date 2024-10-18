@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+
+import { GreenButton } from "./components/buttons/GreenButton";
+import { PinkButton } from "./components/buttons/PinkButton";
 
 /* Import logos */
 import Vibez from "./public/vibez.svg";
@@ -10,9 +12,6 @@ import VibezFestival from "./public/vibez_festival.svg";
 import LogoZ from "./public/logo_z.svg";
 //import Youz from "./public/youz.svg";
 
-/* Colors of the event logo */
-// Green: #90FF23 / rgba(144,255,35,255) / vibezgreen-400
-// Pink: #FF01FC / rgba(255,1,252,255) / vibezpink-600
 
 export default function Home() {
   return (
@@ -41,11 +40,9 @@ export default function Home() {
           <p className="text-center text-xl text-slate-800">
             Després del registre veuràs una sèrie d'ofertes de treball, tria les que més t'agradin i t'enviarem el recull.
           </p>
-          <div className="text-center mt-6"> {/* TODO: Button styles */}
+          <div className="text-center mt-6">
             <Link href="/register-page">
-              <button className="text-lg font-semibold text-slate-900 rounded-lg px-4 py-2 shadow-md bg-vibezgreen-400 hover:bg-vibezgreen-600">
-                Començar
-              </button>
+              <GreenButton text="Començar" type="button" />
             </Link>
           </div>
         </div>

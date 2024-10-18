@@ -2,7 +2,6 @@
 
 /* Imports */
 import { useEffect, useState } from "react";
-
 import TinderCard from "react-tinder-card";
 
 import { OfferType } from "../types";
@@ -10,7 +9,12 @@ import { OfferType } from "../types";
 import { cn } from "@/lib/utils";
 import { Separator } from "@/components/ui/separator";
 
-import { ListItem } from "./ListItem";
+import { FunctionsAndRequirements } from "./FunctionsAndRequirements";
+
+/* Icons */
+import { TiLocation } from "react-icons/ti";
+import { FaFileContract } from "react-icons/fa6";
+import { BsFillClockFill } from "react-icons/bs";
 
 /* Props */
 type Props = {
@@ -51,97 +55,65 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
 
     if (!offer) return <div>Loading...</div>;
     return (
-        /* TODO: Acabar styles i fer responsive per mòbil */
-        /* TODO: ¿¿Fer els div com funcriones y requisitos?? */
-        /* TODO: Canviar paleta de colors (fer variables dels colors) */
-        /* TODO: Escollir tipus de lletra pel projecte */
-
-        /* TODO: Ajustar els max-w i max-h del TinderCard per optimitzar a tots els dispositius */
+        /* TODO: SMOOTH TRANSITIONS i fer responsive per mòbil */
 
         <TinderCard
             className={cn(
                 "flex justify-center items-center", 
-                "w-5/6 h-2/3 max-w-[400px] max-h-[900px]", 
-                "bg-slate-400 rounded-3xl shadow-xl",
+                "w-5/6 h-3/5 max-w-[350px] max-h-[600px]", 
+                "bg-slate-800 rounded-3xl shadow-xl",
                 ""
             )}
             key={offer.id}
             onSwipe={onSwipe}
             preventSwipe={["up", "down"]}
         >
-            <div className="h-full px-4 py-2 flex flex-col justify-between text-white"> {/* TODO: Escollir padding */}
+            <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-white")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
                 {/* Logo o nombre de la empresa */}
-                <div className="h-[12%] mb-2 flex flex-col items-center">
-                    <h2 className="text-3xl font-bold my-auto">{offer.companyName}</h2>
-                    <p className="text-lg font-bold text-pink-400 my-auto">{offer.title}</p>
+                <div className={cn("h-[18%] px-6 py-4 space-x-4", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
+                    <h2 className={cn("text-2xl font-extrabold line-clamp-2", "w-1/2 max-w-[60%]", "text-white")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
+                    <div className="w-[4px] h-8 bg-black"></div> {/* Separador vertical grueso */}
+                    <span className={cn("text-end text-xl font-bold line-clamp-2", "w-1/2 max-w-[40%]", "text-gray-400")}>{offer.title}</span>
                 </div>
 
-                {/* Detalles de la oferta */}
-                <div className="h-[8%] mb-2 flex justify-around items-center text-sm">
-                    <div className="w-1/3 h-full mr-1 flex items-center justify-center bg-slate-800 rounded-xl overflow-auto no-scrollbar">
-                        <div className="flex flex-col items-center">
-                            <p><strong><u>Ubicació</u></strong></p>
-                            <p>{offer.location}</p>
-                        </div>
+                {/* Detalles de la oferta */} {/* TODO: Revisar iconos */}
+                <div className={cn("h-[12%] px-4 pt-2 space-x-1", "flex justify-around items-center", "text-md font-medium")}>
+                    <div className="flex items-center">
+                        <i className="mr-1"><TiLocation /></i>
+                        <span className="text-gray-400">{offer.location}</span>
                     </div>
-                    <div className="w-1/3 h-full mx-1 flex items-center justify-center bg-slate-700 rounded-xl overflow-auto no-scrollbar">
-                        <div className="flex flex-col items-center">
-                            <p><strong>Contracte</strong></p>
-                            <p>{offer.contractType}</p>
-                        </div>
+                    <div className="w-[2px] h-6 bg-black"></div> {/* Separador vertical grueso */}
+                    <div className="flex items-center">
+                        <i className="mr-1"><FaFileContract /></i>
+                        <span className="text-gray-400">{offer.contractType}</span>
                     </div>
-                    <div className="w-1/3 h-full ml-1 flex items-center justify-center bg-slate-800 rounded-xl overflow-auto no-scrollbar">
-                        <div className="flex flex-col items-center">
-                            <p><strong>Horari:</strong></p>
-                            <p>{offer.schedule}</p>
-                        </div>
+                    <div className="w-[2px] h-6 bg-black"></div> {/* Separador vertical grueso */}
+                    <div className="flex items-center">
+                        <i className="mr-1"><BsFillClockFill /></i>
+                        <span className="text-gray-400">{offer.schedule}</span>
                     </div>
                 </div>
 
                 {/* Descripción de la empresa y la oferta */}
-                <div className="h-[45%] mb-2 flex">
-                    <div className="w-full px-4 bg-slate-600 rounded-xl">
-                        <h3 className="text-center text-pink-400 text-lg font-bold my-1">Descripció</h3>
-                        <div className="overflow-auto no-scrollbar max-h-[75%]"> {/* REVIEW: ¿¿¿¿¿ 75% ????? */}
-                            <p className="text-xs ">{offer.description}</p>
-                        </div>
-                    </div>
+                <div className={cn("h-[50%] px-6 py-2 mb-2", "flex flex-col")}>
+                    <h3 className="text-gray-100 text-xl font-bold mb-1">Descripció</h3>
+                    <Separator className="bg-black mb-1"/>
+                    <p className="text-md font-medium leading-relaxed text-gray-300 overflow-auto no-scrollbar">
+                        {offer.description}
+                    </p>
                 </div>
 
-                {/* Funciones y Requisitos */} {/* TODO: Crear component listItem i donar estils a la llista */}
-                <div className="h-[35%] mb-2 flex justify-between">
-                    <div className="w-1/2 mr-1 px-3 bg-slate-800 rounded-xl">
-                        <h3 className="text-center text-pink-400 text-lg font-bold my-2">Funcions</h3>
-                        <div className="overflow-auto no-scrollbar max-h-[75%]">
-                            <ul className="text-xs">
-                                {offer.functions.map((func, index) => (
-                                    <ListItem key={index} item={func} />
-                                ))}
-                                {/* <li key={index}>{func}</li> */}
-                            </ul>
-                        </div>
+                {/* Funciones y Requisitos */}
+                <div className={cn("h-[20%] px-6 py-4 space-x-6", "flex justify-evenly")}>
+                    {/* Funcions */}
+                    <div>
+                        <FunctionsAndRequirements list={offer.functions} title="Funcions" />
                     </div>
-                    <div className="w-1/2 ml-1 px-3 bg-slate-700 rounded-xl">
-                        <h3 className="text-center text-pink-400 text-lg font-bold my-2">Requisits</h3>
-                        <div className="overflow-auto no-scrollbar max-h-[75%]">
-                            <ul className="text-xs">
-                                {offer.requirements.map((req, index) => (
-                                    <ListItem key={index} item={req} />
-                                ))}
-                                {/* <li key={index}>{req}</li> */}
-                            </ul>
-                        </div>
+                    {/* Requisits */}
+                    <div>
+                        <FunctionsAndRequirements list={offer.requirements} title="Requisits" />
                     </div>
                 </div>
-
-                {/* Indicadores "like" o "pass" */}
-                {/* TODO: Canviar els botons per algo guapo */}
-                {/* <div className="h-[5%]">
-                    <div className="flex justify-between mt-4">
-                        <button className="bg-pink-400 text-white px-4 py-2 rounded-lg">Pass</button>
-                        <button className="bg-pink-400 text-white px-4 py-2 rounded-lg">Like</button>
-                    </div>
-                </div> */}
             </div>
         </TinderCard>
     );
