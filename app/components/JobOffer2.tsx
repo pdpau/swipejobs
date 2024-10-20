@@ -16,6 +16,8 @@ import { TiLocation } from "react-icons/ti";
 import { FaFileContract } from "react-icons/fa6";
 import { BsFillClockFill } from "react-icons/bs";
 
+import { useSwipeable } from "react-swipeable";
+
 /* Props */
 type Props = {
     dbOffer: any;
@@ -42,10 +44,9 @@ const transformDataToOfferType = (dbData: any): OfferType | null => {
 
 
 /* Main component */
-export function JobOffer({ dbOffer, onSwipe }: Props) {
+export function JobOffer2({ dbOffer, onSwipe }: Props) {
     /* --- Variables --- */
     const [offer, setOffer] = useState<OfferType | null>(null);
-    const [isScrollingDescription, setIsScrollingDescription] = useState(false);
 
     /* --- Functions --- */
     useEffect(() => {
@@ -54,22 +55,42 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
         console.log("Offer:", mappedOffer);
     }, [dbOffer]);
 
-    /* Description scroll */
-    const handleDescriptionScrollStart = () => {
-        setIsScrollingDescription(true);
-    };
-    const handleDescriptionScrollEnd = () => {
-        setIsScrollingDescription(false);
-    };
+    /* Swipeable functions */
+    const [isSwiping, setIsSwiping] = useState(false);
+    const [lastSwipe, setLastSwipe] = useState<string | null>(null);
+    const handlers = useSwipeable({
+        onSwipedLeft: () => {
+            setIsSwiping(true);
+            setLastSwipe("left");
+            onSwipe("left");
+        },
+        onSwipedRight: () => {
+            setIsSwiping(true);
+            setLastSwipe("right");
+            onSwipe("right");
+        },
+        //preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+    });
+    useEffect(() => {
+        if (isSwiping) {
+            const timer = setTimeout(() => {
+                setIsSwiping(false);
+                setLastSwipe(null);
+            }, 500);
+            return () => clearTimeout(timer);
+        }
+    }, [isSwiping]);
+    /* End of swipeable functions */
 
 
-
-    if (!offer) return <div className="text-slate-100 text-xl font-bold">Loading...</div>;
+    if (!offer) return <div className="text-slate-100 text-xl font-bold">Carregant l'oferta...</div>;
     return (
-        /* TODO: SMOOTH TRANSITIONS i fer responsive per mòbil */
-
-        <TinderCard
+        <div
+            {...handlers}
             className={cn(
+                { 'swipe-left': isSwiping && lastSwipe === 'left', 'swipe-right': isSwiping && lastSwipe === 'right' },
+                "",
                 "flex justify-center items-center", 
                 "w-5/6 h-3/5 max-w-[350px] max-h-[600px]", 
                 "bg-slate-800 rounded-3xl shadow-xl",
@@ -77,15 +98,12 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                 ""
             )}
             key={offer.id}
-            /* onSwipe={isScrollingDescription ? () => {} : onSwipe} */
-            onSwipe={onSwipe}
-            preventSwipe={["up", "down"]}
         >
             <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-slate-100")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
                 {/* Logo o nombre de la empresa */}
                 <div className={cn("h-[18%] px-6 py-4 space-x-4", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
                     <h2 className={cn("text-2xl font-extrabold line-clamp-2", "w-1/2 max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
-                    <div className="w-[4px] h-8 bg-slate-950"></div> {/* Separador vertical grueso */}
+                    {/* <div className="w-[4px] h-8 bg-slate-900"></div> */} {/* Separador vertical grueso */}
                     <span className={cn("text-end text-xl font-bold line-clamp-2", "w-1/2 max-w-[40%]", "text-slate-400")}>{offer.title}</span>
                 </div>
 
@@ -95,12 +113,12 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                         <i className="mr-1"><TiLocation /></i>
                         <span className="text-slate-400">{offer.location}</span>
                     </div>
-                    <div className="w-[2px] h-6 bg-slate-950"></div> {/* Separador vertical grueso */}
+                    {/* <div className="w-[2px] h-6 bg-slate-900"></div> */} {/* Separador vertical grueso */}
                     <div className="flex items-center">
                         <i className="mr-1"><FaFileContract /></i>
                         <span className="text-slate-400">{offer.contractType}</span>
                     </div>
-                    <div className="w-[2px] h-6 bg-slate-950"></div> {/* Separador vertical grueso */}
+                    {/* <div className="w-[2px] h-6 bg-slate-900"></div> */} {/* Separador vertical grueso */}
                     <div className="flex items-center">
                         <i className="mr-1"><BsFillClockFill /></i>
                         <span className="text-slate-400">{offer.schedule}</span>
@@ -111,11 +129,7 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                 <div className={cn("h-[50%] px-6 py-2 mb-2", "flex flex-col")}>
                     <h3 className="text-slate-100 text-xl font-bold mb-1">Descripció</h3>
                     {/* <Separator className="bg-slate-950 mb-1"/> */}
-                    <p 
-                        className="text-md font-medium leading-relaxed text-slate-300 overflow-y-auto no-scrollbar"
-                        /* onTouchStart={handleDescriptionScrollStart}
-                        onTouchEnd={handleDescriptionScrollEnd} */
-                    >
+                    <p className="text-md font-medium leading-relaxed text-slate-300 overflow-y-auto no-scrollbar">
                         {offer.description}
                     </p>
                 </div>
@@ -132,6 +146,6 @@ export function JobOffer({ dbOffer, onSwipe }: Props) {
                     </div>
                 </div>
             </div>
-        </TinderCard>
+        </div>
     );
 };

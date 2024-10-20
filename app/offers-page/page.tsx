@@ -9,6 +9,7 @@ import { supabase } from '../../lib/supabaseClient';
 import { cn } from '@/lib/utils';
 
 import { JobOffer } from '../components/JobOffer';
+import { JobOffer2 } from '../components/JobOffer2';
 import { PaginationDots } from '../components/PaginationDots';
 
 import { OfferType } from "../types";
@@ -91,11 +92,12 @@ export default function OffersPage() {
       />
 
       {loading ? (
-        <p className="text-white text-xl font-bold">Cargando ofertas...</p>
+        <p className="text-slate-100 text-xl font-bold">Carregant ofertes...</p>
       ) : (
         currentIndex !== null && currentIndex >= 0 && (
           <div className="w-screen h-screen flex flex-col justify-center items-center">
-            <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} />
+            {/* <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
+            <JobOffer2 dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} />
             <PaginationDots totalOffers={offersBD.length} currentIndex={currentIndex} />
           </div>
         )
