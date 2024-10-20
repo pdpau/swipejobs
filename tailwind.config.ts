@@ -12,8 +12,18 @@ const config: Config = {
 			screens: {
 				'max-h-logo-main-first': {'raw': '(max-height: 680px)'},
 				'max-h-logo-main-second': {'raw': '(max-height: 570px)'},
+				'max-h-logo-main-big': {'raw': '(min-height: 1100px)'},
 				'max-h-logo-register-first': {'raw': '(max-height: 760px)'},
 				'max-h-logo-register-second': {'raw': '(max-height: 680px)'},
+				'max-h-logo-register-big': {'raw': '(min-height: 1100px)'},
+			},
+			scale: {
+				'175': '1.75',
+				'200': '2',
+				'225': '2.25',
+				'250': '2.5',
+				'275': '2.75',
+				'300': '3',
 			},
 			colors: {
 				background: 'hsl(var(--background))',
