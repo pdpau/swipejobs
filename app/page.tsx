@@ -19,11 +19,11 @@ import LogoZ from "./public/logo_z.svg";
 
 export default function Home() {
   const router = useRouter();
-  console.log("ID Guardat: " + localStorage.getItem('userId'))
+  console.log("ID Guardat: " + localStorage.getItem('userId')); // TODO: Revisar per que dona error
   const handleChangePage = async () => {
     localStorage.setItem('userId', "");
     router.push('/register-page'); // Redirigir a /offers-page
-  }
+  };
 
   return (
     <>
