@@ -48,20 +48,31 @@ export default function RegisterPage() {
 
   const handleRegister = async () => {
     // Validaciones
+    // if(email != null){
+    //   const { data, error2 } = await supabase
+    //     .from('users')
+    //     .select()
+    //     .eq('mail', email); // Filtrar por email
+    //   if (!error2) {
+    //     console.log("SALTA ERROR MAIL Principi")
+    //     toast.error('Aquest correu ja està registrat')
+    //     return
+    //   }
+    // }
     if (!name || !surname || !email || !tlf) {
-      toast.error('Todos los campos deben estar completos.');
+      toast.error('Cap camp pot estar buit');
       return;
     }
     if (!validateEmail(email)) {
-      toast.error('El correo electrónico no es válido.');
+      toast.error('El correu electrònic no és vàlid');
       return;
     }
     if (!validatePhone(tlf)) {
-      toast.error('El número de teléfono debe tener 9 dígitos.');
+      toast.error('El número de telèfon ha de tenir 9 dígits');
       return;
     }
     if (!conditionsAccepted) {
-      toast.error('Debes aceptar los términos y condiciones.');
+      toast.error('Has de acceptar els termes i condicions');
       return;
     }
 
@@ -79,16 +90,29 @@ export default function RegisterPage() {
       .insert({ username: name, surname: surname, created_at: new Date(), mail: email, telephone: tlf, })
 
     if (error) {
-      console.error('Error registering user:', error.message);
-      toast.error('Error al crear un usuario')
-      // Maneja el error si el email ya está registrado o cualquier otro problema
-    } else {
-      const { data, error } = await supabase
+      const { data, error2 } = await supabase
         .from('users')
         .select()
         .eq('mail', email); // Filtrar por email
-      if (error) {
-        console.error('Error selecting user by email:', error.message);
+      if (!error2) {
+        console.error('Error selecting user by email FINAL:', error.message);
+        toast.error('Aquest correu ja està en ús');
+        return;
+      }
+      else{
+        console.error('Error registering user:', error.message);
+        toast.error('Error al crear un usuario')
+        // Maneja el error si el email ya está registrado o cualquier otro problema
+      }
+    } else {
+      const { data, error2 } = await supabase
+        .from('users')
+        .select()
+        .eq('mail', email); // Filtrar por email
+      if (!error2) {
+        console.error('Error selecting user by email FINAL:', error.message);
+        toast.error('Aquest correu ja està en ús')
+        return
       } else {
         toast.success('User Registered Succesfully!');
         const insertedUserId = data[0].id;
