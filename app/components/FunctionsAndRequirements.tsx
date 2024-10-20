@@ -39,7 +39,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                             {title}
                         </DialogTitle>
                     </DialogHeader>
-                    <div className="max-h-60 p-4 overflow-auto no-sscrollbar"> {/* Scrollable */}
+                    <div className="max-h-60 px-4 overflow-auto no-scrollbar"> {/* Scrollable */}
                         <DialogDescription>
                             <ul className="list-none">
                                 {list.map((item, index) => (
@@ -55,5 +55,5 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                 </DialogContent>
             </Dialog>
         </main>
-    )
+    );
 };
