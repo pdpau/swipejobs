@@ -4,6 +4,7 @@
 import { useState } from "react";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,14 @@ import VibezFestival from "../public/vibez_festival.svg";
 
 /* Main component */
 export default function ThankYouPage() {
+  const router = useRouter();
+  localStorage.setItem('userId', "");
+
+  const handleGoBack = async () => {
+    localStorage.setItem('userId', "");
+    router.push('/');
+  } 
+
   return (
     <main 
       className={cn(
@@ -42,9 +51,8 @@ export default function ThankYouPage() {
           T'enviarem el recull d'ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
         </p>
         <div className="text-center mt-6">
-          <Link href="/">
-            <GreenButton text="Tornar a la pàgina principal" type="button" />
-          </Link>
+            <GreenButton text="Tornar a la pàgina principal" type="button" 
+            onClickFunction={handleGoBack}/>
         </div>
       </div>
     </main>

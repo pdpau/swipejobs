@@ -1,7 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import Link from "next/link";
 
 import { cn } from "@/lib/utils";
+import { useRouter } from "next/navigation";
+
 
 import { GreenButton } from "./components/buttons/GreenButton";
 import { PinkButton } from "./components/buttons/PinkButton";
@@ -14,6 +18,13 @@ import LogoZ from "./public/logo_z.svg";
 
 
 export default function Home() {
+  const router = useRouter();
+  console.log("ID Guardat: " + localStorage.getItem('userId'))
+  const handleChangePage = async () => {
+    localStorage.setItem('userId', "");
+    router.push('/register-page'); // Redirigir a /offers-page
+  }
+
   return (
     <>
       <main 
@@ -41,9 +52,9 @@ export default function Home() {
             Després del registre veuràs una sèrie d'ofertes de treball, tria les que més t'agradin i t'enviarem el recull.
           </p>
           <div className="text-center mt-6">
-            <Link href="/register-page">
-              <GreenButton text="Començar" type="button" />
-            </Link>
+              <GreenButton text="Començar" type="button" 
+              onClickFunction={handleChangePage}
+              />
           </div>
         </div>
       </main>
