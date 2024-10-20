@@ -88,19 +88,18 @@ export default function RegisterPage() {
     const { error } = await supabase
       .from('users')
       .insert({ username: name, surname: surname, created_at: new Date(), mail: email, telephone: tlf, })
-
     if (error) {
       const { data, error2 } = await supabase
         .from('users')
         .select()
         .eq('mail', email); // Filtrar por email
       if (!error2) {
-        console.error('Error selecting user by email FINAL:', error.message);
+        // console.error('Error selecting user by email FINAL:', error.message);
         toast.error('Aquest correu ja està en ús');
         return;
       }
       else{
-        console.error('Error registering user:', error.message);
+        // console.error('Error registering user:', error.message);
         toast.error('Error al crear un usuario')
         // Maneja el error si el email ya está registrado o cualquier otro problema
       }
@@ -109,9 +108,9 @@ export default function RegisterPage() {
         .from('users')
         .select()
         .eq('mail', email); // Filtrar por email
-      if (!error2) {
-        console.error('Error selecting user by email FINAL:', error.message);
-        toast.error('Aquest correu ja està en ús')
+      if (error2) {
+        // console.error('Error selecting user by email FINAL:', error.message);
+        toast.error('Aquest correu ja està en ús dintre')
         return
       } else {
         toast.success('User Registered Succesfully!');
@@ -267,7 +266,7 @@ export default function RegisterPage() {
         {/* Submit button */}
         <div className="w-4/5 flex justify-center">
             <GreenButton 
-              text="¿Registrar datos?" 
+              text="Registrar Dades" 
               type="submit" 
               onClickFunction={handleRegister} 
             /> {/* Working well !! */}

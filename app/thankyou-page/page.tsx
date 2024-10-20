@@ -19,7 +19,7 @@ import VibezFestival from "../public/vibez_festival.svg";
 /* Main component */
 export default function ThankYouPage() {
   const router = useRouter();
-
+  localStorage.setItem('userId', "");
 
   const handleGoBack = async () => {
     localStorage.setItem('userId', "");
