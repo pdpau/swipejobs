@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "SwipeJobs",
-  description: "Swipe until you find your dream job!",
+  description: "Swipe until you match with your dream job!",
 };
 
 

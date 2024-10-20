@@ -1,10 +1,9 @@
 "use client";
 
-/* Imports */
-import { cn } from "@/lib/utils";
 
 /* Import icons */
 import { FaCheckCircle } from "react-icons/fa";
+import { SiListmonk } from "react-icons/si";
 
 type Props = {
     item: string;
@@ -13,9 +12,14 @@ type Props = {
 
 export function ListItem({ item, color }: Props) {
     return (
-        <li className="flex items-center space-x-2 py-1">
-            <FaCheckCircle className={color} /> {/* TODO: Cambiar icono antes del texto */}
-            <span className="text-gray-200 text-lg font-medium">{item}</span>
+        <li className="flex justify-start items-center space-x-2 space-y-2">
+            <div>
+                {/* <FaCheckCircle className={color} size={20} /> */}
+                <SiListmonk className={color} size={15} />
+            </div>
+            <div>
+                <span className="text-slate-300 text-lg font-medium">{item}</span>
+            </div>
         </li>
-    )
+    );
 };
