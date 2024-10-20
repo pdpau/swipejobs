@@ -242,13 +242,11 @@ export default function RegisterPage() {
 
         {/* Submit button */}
         <div className="w-4/5 flex justify-center">
-          <Link href={conditionsAccepted && name && surname && email && tlf ? "/offers-page" : "#"}>
             <GreenButton 
               text="¿Registrar datos?" 
               type="submit" 
               onClickFunction={handleRegister} 
             /> {/* Working well !! */}
-          </Link>
         </div>
       </div>
     </main>
