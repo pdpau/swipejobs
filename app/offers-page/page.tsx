@@ -9,8 +9,6 @@ import { supabase } from '../../lib/supabaseClient';
 import { cn } from '@/lib/utils';
 
 import { JobOffer } from '../components/JobOffer';
-import { JobOffer2 } from '../components/JobOffer2';
-import { JobOffer3 } from '../components/JobOffer3';
 import { PaginationDots } from '../components/PaginationDots';
 import { GreenButton } from "../components/buttons/GreenButton";
 
@@ -114,9 +112,6 @@ export default function OffersPage() {
         console.log(`Passed on: ${currentOffer.title}`);
       }
 
-      /* TODO: Guardar ofertes amb like o pass a la DB */
-
-
       /* Actualitzem index i si no hi ha mes ofertes -> anar a thankyou-page */
       const nextIndex = currentIndex + 1;
       setTimeout(() => {
@@ -144,64 +139,60 @@ export default function OffersPage() {
           <h3 className="text-white text-center text-4xl font-extrabold">
             Registra't per veure les ofertes
           </h3>
-
           <div className="text-center mt-6">
-            <GreenButton text="Registrat" type="button"
-              onClickFunction={handleChangePage}
-            />
+            <GreenButton text="Registrat" type="button" onClickFunction={handleChangePage} />
           </div>
         </div>
       </main>
-    )
-  }
-  else {
+    );
+  } else {
+    return (
+      <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
+        <LogoZ
+          className={cn(
+            "absolute top-16 left-1/2 transform -translate-x-1/2",
+            "h-16 w-16",
+            "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+          )}
+        />
 
-  }
-  return (
-    <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
-      <LogoZ
-        className={cn(
-          "absolute top-16 left-1/2 transform -translate-x-1/2",
-          "h-16 w-16",
-          "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+        {loading ? (
+          <p className="text-slate-100 text-xl font-bold">Carregant ofertes...</p>
+        ) : (
+          currentIndex !== null && currentIndex >= 0 && (
+            <div className="w-screen h-screen flex flex-col justify-center items-center">
+              {/* <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
+              {/* <JobOffer2 dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
+              <JobOffer
+                dbOffer={offersBD[currentIndex]}
+                onSwipe={onSwipe}
+                onSwipeStart={handleSwipeStart}
+                onSwipeEnd={handleSwipeEnd}
+                isSwiping={isSwiping}
+                lastSwipe={lastSwipe}
+              />
+              <PaginationDots totalOffers={offersBD.length} currentIndex={currentIndex} />
+
+              {/* Icono de like */}
+              <div
+                className={`absolute right-[3%] top-[81%] transform -translate-y-1/2 transition-transform duration-500 ease-in-out
+                  ${ isSwiping && lastSwipe === 'right' ? '-translate-x-[40vw] -translate-y-[40vh] scale-300' : 'scale-100' }
+                `}
+              >
+                <TiTick className="text-green-500" size={60} />
+              </div>
+              {/* Icono de dislike */}
+              <div
+                className={`absolute left-[3%] top-[81%] transform -translate-y-1/2 transition-transform duration-500 ease-in-out
+                  ${isSwiping && lastSwipe === 'left' ? 'translate-x-[40vw] -translate-y-[40vh] scale-300' : 'scale-100' }
+                `}
+              >
+                <TiTimes className="text-red-500" size={60} />
+              </div>
+            </div>
+          )
         )}
-      />
-
-      {loading ? (
-        <p className="text-slate-100 text-xl font-bold">Carregant ofertes...</p>
-      ) : (
-        currentIndex !== null && currentIndex >= 0 && (
-          <div className="w-screen h-screen flex flex-col justify-center items-center">
-            {/* <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
-            {/* <JobOffer2 dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
-            <JobOffer3
-              dbOffer={offersBD[currentIndex]}
-              onSwipe={onSwipe}
-              onSwipeStart={handleSwipeStart}
-              onSwipeEnd={handleSwipeEnd}
-              isSwiping={isSwiping}
-              lastSwipe={lastSwipe}
-            />
-            <PaginationDots totalOffers={offersBD.length} currentIndex={currentIndex} />
-          </div>
-        )
-      )}
-
-      {/* Icono de like */}
-      <div
-        className={`absolute right-[3%] top-[81%] transform -translate-y-1/2 transition-transform duration-500 ease-in-out ${isSwiping && lastSwipe === 'right' ? '-translate-x-[40vw] -translate-y-[40vh] scale-300' : 'scale-100'
-          }`}
-      >
-        <TiTick className="text-green-500" size={60} />
-      </div>
-      {/* Icono de dislike */}
-      <div
-        className={`absolute left-[3%] top-[81%] transform -translate-y-1/2 transition-transform duration-500 ease-in-out ${isSwiping && lastSwipe === 'left' ? 'translate-x-[40vw] -translate-y-[40vh] scale-300' : 'scale-100'
-          }`}
-      >
-        <TiTimes className="text-red-500" size={60} />
-      </div>
-
-    </main>
-  );
+      </main>
+    );
+  };
 };
