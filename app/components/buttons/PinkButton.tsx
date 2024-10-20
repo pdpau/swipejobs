@@ -6,9 +6,10 @@ type Props = {
     text: string;
     type?: "button" | "submit";
     onClickFunction?: () => void;
+    onTouchFunction?: () => void;
 };
 
-export function PinkButton({ text, type, onClickFunction }: Props) {
+export function PinkButton({ text, type, onClickFunction, onTouchFunction }: Props) {
     return (
         <OwnButton 
             text={text}
@@ -18,6 +19,7 @@ export function PinkButton({ text, type, onClickFunction }: Props) {
             toColor="to-vibezpink-700"
             textColor="text-slate-100"
             onClickFunction={onClickFunction}
+            onTouchFunction={onTouchFunction}
         />
     );
 };

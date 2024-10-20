@@ -6,9 +6,10 @@ type Props = {
     text: string;
     type?: "button" | "submit";
     onClickFunction?: () => void;
+    onTouchFunction?: () => void;
 };
 
-export function GreenButton({ text, type, onClickFunction }: Props) {
+export function GreenButton({ text, type, onClickFunction, onTouchFunction }: Props) {
     return (
         <OwnButton 
             text={text}
@@ -18,6 +19,7 @@ export function GreenButton({ text, type, onClickFunction }: Props) {
             toColor="to-vibezgreen-500"
             textColor="text-slate-800"
             onClickFunction={onClickFunction}
+            onTouchFunction={onTouchFunction}
         />
     );
 };

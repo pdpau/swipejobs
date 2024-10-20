@@ -12,10 +12,11 @@ type Props = {
     toColor: string;    // Clases de Tailwind para 'to'
     textColor: string;  // Clases de Tailwind para el color de texto
     onClickFunction?: () => void; // Función a ejecutar al hacer click
+    onTouchFunction?: () => void; // Función a ejecutar al tocar
 };
 
 /* Main component */
-export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor, onClickFunction }: Props) {
+export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor, onClickFunction, onTouchFunction }: Props) {
     return (
         <button
             type={type}
@@ -31,6 +32,7 @@ export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor,
                     : `bg-gradient-to-r ${fromColor} ${toColor}`}
             `}
             onClick={onClickFunction}
+            onTouchEnd={onTouchFunction}
         >
             {text}
         </button>
