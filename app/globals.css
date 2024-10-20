@@ -170,97 +170,97 @@ body {
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-extraleicht.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-extraleicht.woff2') format('woff2');
   font-weight: 200;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-extraleicht-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-extraleicht-kursiv.woff2') format('woff2');
   font-weight: 200;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-leicht.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-leicht.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-leicht-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-leicht-kursiv.woff2') format('woff2');
   font-weight: 300;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-buch.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-buch.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-buch-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-buch-kursiv.woff2') format('woff2');
   font-weight: 400;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-kraftig.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-kraftig.woff2') format('woff2');
   font-weight: 500;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-kraftig-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-kraftig-kursiv.woff2') format('woff2');
   font-weight: 500;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-halbfett.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-halbfett.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-halbfett-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-halbfett-kursiv.woff2') format('woff2');
   font-weight: 600;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-dreiviertelfett.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-dreiviertelfett.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-dreiviertelfett-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-dreiviertelfett-kursiv.woff2') format('woff2');
   font-weight: 700;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-fett.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-fett.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-fett-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-fett-kursiv.woff2') format('woff2');
   font-weight: 800;
   font-style: italic;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-extrafett.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-extrafett.woff2') format('woff2');
   font-weight: 900;
   font-style: normal;
 }
 @font-face {
   font-family: 'Söhne';
-  src: url('/fonts/TestSoehne/test-soehne-extrafett-kursiv.woff2') format('woff2');
+  src: url('./fonts/TestSoehne/test-soehne-extrafett-kursiv.woff2') format('woff2');
   font-weight: 900;
   font-style: italic;
 }
