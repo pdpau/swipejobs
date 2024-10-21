@@ -97,9 +97,9 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
         >
             <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-slate-100")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
                 {/* Logo o nombre de la empresa */}
-                <div className={cn("h-[18%] px-6 py-4 space-x-4", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
-                    <h2 className={cn("text-3xl font-extrabold line-clamp-2", "w-1/2 max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
-                    <span className={cn("text-end text-xl font-bold line-clamp-2", "w-1/2 max-w-[40%]", "text-slate-400")}>{offer.title}</span>
+                <div className={cn("h-[18%] px-6 py-3", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
+                    <h2 className={cn("text-start text-2xl font-extrabold line-clamp-2 text-ellipsis", "w-[60%] max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
+                    <span className={cn("text-end text-xl font-bold line-clamp-2", "w-[40%] max-w-[40%]", "text-slate-400")}>{offer.title}</span>
                 </div>
 
                 {/* Detalles de la oferta */}
@@ -127,7 +127,7 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
                 </div>
 
                 {/* Funciones y Requisitos */}
-                <div className={cn("h-[20%] px-6 py-4 space-x-6", "flex justify-evenly")}>
+                <div className={cn("h-[20%] px-4 py-2 space-x-6", "flex justify-evenly")}>
                     {/* Funcions */}
                     <div>
                         <FunctionsAndRequirements list={offer.functions} title="Funcions" />

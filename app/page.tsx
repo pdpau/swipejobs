@@ -52,7 +52,7 @@ export default function Home() {
             Després del registre veuràs una sèrie d'ofertes de treball, tria les que més t'agradin i t'enviarem el recull.
           </p>
           <div className="text-center mt-6">
-              <GreenButton text="Començar" type="button" 
+              <GreenButton text="Registrar-se" type="button" 
               onClickFunction={handleChangePage}
               />
           </div>
