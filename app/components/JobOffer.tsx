@@ -97,13 +97,13 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
         >
             <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-slate-100")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
                 {/* Logo o nombre de la empresa */}
-                <div className={cn("h-[18%] px-6 py-3", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
-                    <h2 className={cn("text-start text-2xl font-extrabold line-clamp-2 text-ellipsis", "w-[60%] max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
-                    <span className={cn("text-end text-xl font-bold line-clamp-2", "w-[40%] max-w-[40%]", "text-slate-400")}>{offer.title}</span>
+                <div className={cn("h-[15%] px-6 py-1", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
+                    <h2 className={cn("text-start text-xl font-extrabold line-clamp-2 text-ellipsis", "w-[60%] max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
+                    <span className={cn("text-end text-lg font-bold line-clamp-2 text-ellipsis", "w-[40%] max-w-[40%]", "text-slate-400")}>{offer.title}</span>
                 </div>
 
                 {/* Detalles de la oferta */}
-                <div className={cn("h-[12%] px-4 pt-2 space-x-1", "flex justify-around items-center", "text-md font-medium")}>
+                <div className={cn("h-[15%] px-4 pt-2 space-x-1", "flex justify-around items-center", "text-md font-medium")}>
                     <div className="flex items-center">
                         <i className="mr-1"><TiLocation /></i>
                         <span className="text-slate-400">{offer.location}</span>
@@ -119,7 +119,7 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
                 </div>
 
                 {/* Descripción de la empresa y la oferta */}
-                <div className={cn("h-[50%] px-6 py-2 mb-2", "flex flex-col")}>
+                <div className={cn("h-[55%] px-6 py-2 mb-2", "flex flex-col")}>
                     <h3 className="text-slate-50 text-xl font-bold mb-1">Descripció</h3>
                     <p className="text-md font-medium leading-relaxed text-slate-300 overflow-y-auto no-scrollbar">
                         {offer.description}
@@ -127,7 +127,7 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
                 </div>
 
                 {/* Funciones y Requisitos */}
-                <div className={cn("h-[20%] px-4 py-2 space-x-6", "flex justify-evenly")}>
+                <div className={cn("h-[15%] px-4 space-x-6", "flex justify-evenly")}>
                     {/* Funcions */}
                     <div>
                         <FunctionsAndRequirements list={offer.functions} title="Funcions" />

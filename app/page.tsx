@@ -14,7 +14,7 @@ import { PinkButton } from "./components/buttons/PinkButton";
 import Vibez from "./public/vibez.svg";
 import VibezFestival from "./public/vibez_festival.svg";
 import LogoZ from "./public/logo_z.svg";
-//import Youz from "./public/youz.svg";
+import Youz from "./public/youz.svg";
 
 
 export default function Home() {

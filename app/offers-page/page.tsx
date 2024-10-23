@@ -125,7 +125,8 @@ export default function OffersPage() {
     }
   }
 
-  if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) {
+  /* TODO: Si es refresca la pagina torna a la primera oferta (arreglar sobreescribint ofertes o continuant des d'on s'ha quedat) */
+  if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) { /* ¿¿¿¿ || localStorage === undefined  ???? */
     return (
       <main className="h-screen w-screen bg-slate-100 flex justify-center items-center">
         <LogoZ
@@ -146,13 +147,14 @@ export default function OffersPage() {
       </main>
     );
   } else {
+    console.log("userId:", userId); /* TODO: Borrar el log */
     return (
       <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
         <LogoZ
           className={cn(
-            "absolute top-16 left-1/2 transform -translate-x-1/2",
+            "absolute top-[8%] left-1/2 transform -translate-x-1/2",
             "h-16 w-16",
-            "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+            "max-h-logo-register-first:top-[5%] max-h-logo-register-second:hidden max-h-logo-register-big:top-[23%]"
           )}
         />
 
