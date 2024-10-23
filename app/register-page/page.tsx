@@ -2,23 +2,25 @@
 
 /* Imports */
 import { supabase } from '../../lib/supabaseClient';
-import { useState } from "react";
 
-import Link from "next/link";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+import { TermsAndConditions } from '../components/TermsAndConditions';
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+
 import toast, { Toaster } from 'react-hot-toast';
 
 import { GreenButton } from "../components/buttons/GreenButton";
-import { PinkButton } from "../components/buttons/PinkButton";
 
 /* Import logos */
 import LogoZ from "../public/logo_z.svg";
+import Youz from "../public/youz.svg";
 
 
 /* Main component */
@@ -133,17 +135,18 @@ export default function RegisterPage() {
 
       <LogoZ
         className={cn(
-          "absolute top-20 left-1/2 transform -translate-x-1/2", 
+          "absolute top-[8%] left-1/2 transform -translate-x-1/2", 
           "h-16 w-16",
-          "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+          "max-h-logo-register-first:top-[5%] max-h-logo-register-second:hidden max-h-logo-register-big:top-[23%]"
         )}
       />
 
       {/* Main container */}
-      <div id="register-main-div" className={cn("w-full max-w-md h-3/4", "flex flex-col justify-center items-center space-y-8", "text-white")}>
+      <div id="register-main-div" className={cn("w-full max-w-md h-3/4", "flex flex-col justify-center items-center space-y-8", "text-slate-100")}>
         {/* Title */}
-        <h1 className="text-4xl font-bold text-center text-white">
-          #SwipeTalent<span className="text-vibezgreen-400">Youz</span> {/* TODO: Logo YOUZ */}
+        <h1 className="text-4xl font-bold text-center text-slate-100 flex justify-center items-center space-x-1.5">
+          <p>#SwipeTalent</p>
+          <Youz className="text-vibezgreen-400 h-24 w-24 pt-[20px]" />
         </h1>
 
         {/* Form */}
@@ -155,7 +158,7 @@ export default function RegisterPage() {
             value={name}
             autoComplete="off"
             className={cn(
-              "bg-transparent text-white placeholder-white border-0",
+              "bg-transparent text-slate-100 placeholder-slate-100 border-0",
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
@@ -169,7 +172,7 @@ export default function RegisterPage() {
             value={surname}
             autoComplete="off"
             className={cn(
-              "bg-transparent text-white placeholder-white border-0",
+              "bg-transparent text-slate-100 placeholder-slate-100 border-0",
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
@@ -183,7 +186,7 @@ export default function RegisterPage() {
             value={email}
             autoComplete="off"
             className={cn(
-              "bg-transparent text-white placeholder-white border-0",
+              "bg-transparent text-slate-100 placeholder-slate-100 border-0",
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
@@ -197,7 +200,7 @@ export default function RegisterPage() {
             value={tlf}
             autoComplete="off"
             className={cn(
-              "bg-transparent text-white placeholder-white border-0",
+              "bg-transparent text-slate-100 placeholder-slate-100 border-0",
               "focus-visible:ring-offset-0 focus-visible:ring-0",
               ""
             )}
@@ -212,9 +215,9 @@ export default function RegisterPage() {
             id="accept-conditions"
             checked={conditionsAccepted}
             onCheckedChange={() => setConditionsAccepted(!conditionsAccepted)}
-            className="w-5 h-5 mr-2 text-vibezgreen-400 bg-transparent border border-white"
+            className="w-5 h-5 mr-2 text-vibezgreen-400 bg-transparent border border-slate-100"
           />
-          <label htmlFor="accept-conditions" className="text-sm text-white">
+          <label htmlFor="accept-conditions" className="text-sm text-slate-100">
             Accepto les condicions d'ús i la política de privacitat
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}> {/* TODO: ¿¿ Dialog background white or slate ?? */}
               <DialogTrigger asChild>
@@ -231,21 +234,7 @@ export default function RegisterPage() {
                 {/* Contenedor scrollable */}
                 <div className="max-h-60 overflow-y-auto pr-4">
                   <DialogDescription className="text-slate-700">
-                    <ul>
-                    En acceptar aquests termes i condicions, vostè consenteix que Youz Talent processi i emmagatzemi les seves dades personals per als fins descrits a continuació. Aquests termes expliquen com recollim, utilitzem i protegim la seva informació personal, en compliment amb la normativa aplicable de protecció de dades.
-
-                    </ul>
-                    <ul className="list-disc pl-4 mt-4 space-y-2">
-                      <li><strong>Dades Recollides:</strong> En registrar-se, recopilarem el nom complet, correu electrònic i número de telèfon per a l'enviament d'ofertes de treball i comunicacions rellevants.</li>
-                      <li><strong>Propòsit del Tractament de Dades:</strong> Utilitzarem les dades per enviar ofertes de treball personalitzades i actualitzacions dels nostres serveis.</li> 
-                      <li><strong>Newsletter:</strong> En acceptar aquests termes, vostè serà subscrit automàticament al nostre butlletí informatiu.</li>
-                      <li><strong>Base Legal:</strong> El tractament es basa en el consentiment explícit de l'usuari.</li>
-                      <li><strong>Conservació de Dades:</strong> Les dades es conservaran mentre mantingui el compte actiu o fins que sol·liciti la seva eliminació.</li>
-                      <li><strong>Drets del Usuari:</strong> Accedir, rectificar o sol·licitar l'eliminació de les seves dades en qualsevol moment.</li>
-                      <li><strong>Seguretat de Dades:</strong> Implementem mesures per garantir la seguretat de la seva informació.</li>
-                      <li><strong>Modificacions:</strong> Youz Talent es reserva el dret de modificar aquests termes en qualsevol moment.</li>
-                      <li><strong>Contacte:</strong> Per a qualsevol consulta, pot contactar amb nosaltres.</li>
-                    </ul>
+                    <TermsAndConditions />
                   </DialogDescription>
                 </div>
 
