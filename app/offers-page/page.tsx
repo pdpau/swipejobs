@@ -125,9 +125,10 @@ export default function OffersPage() {
     }
   }
 
-  if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) {
+  /* TODO: Si es refresca la pagina torna a la primera oferta (arreglar sobreescribint ofertes o continuant des d'on s'ha quedat) */
+  if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) { /* ¿¿¿¿ || localStorage === undefined  ???? */
     return (
-      <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
+      <main className="h-screen w-screen bg-slate-100 flex justify-center items-center">
         <LogoZ
           className={cn(
             "absolute top-16 left-1/2 transform -translate-x-1/2",
@@ -136,23 +137,24 @@ export default function OffersPage() {
           )}
         />
         <div className={cn("h-full w-5/6", "flex flex-col justify-center items-center", "space-y-6")}>
-          <h3 className="text-white text-center text-4xl font-extrabold">
-            Registra't per veure les ofertes
+          <h3 className="text-center text-4xl font-extrabold text-slate-950">
+            REGISTRA'T PER VEURE LES OFERTES
           </h3>
           <div className="text-center mt-6">
-            <GreenButton text="Registrat" type="button" onClickFunction={handleChangePage} />
+            <GreenButton text="Registrar-se" type="button" onClickFunction={handleChangePage} />
           </div>
         </div>
       </main>
     );
   } else {
+    console.log("userId:", userId); /* TODO: Borrar el log */
     return (
       <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
         <LogoZ
           className={cn(
-            "absolute top-16 left-1/2 transform -translate-x-1/2",
+            "absolute top-[8%] left-1/2 transform -translate-x-1/2",
             "h-16 w-16",
-            "max-h-logo-register-first:top-10 max-h-logo-register-second:hidden"
+            "max-h-logo-register-first:top-[5%] max-h-logo-register-second:hidden max-h-logo-register-big:top-[23%]"
           )}
         />
 
@@ -161,8 +163,6 @@ export default function OffersPage() {
         ) : (
           currentIndex !== null && currentIndex >= 0 && (
             <div className="w-screen h-screen flex flex-col justify-center items-center">
-              {/* <JobOffer dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
-              {/* <JobOffer2 dbOffer={offersBD[currentIndex]} onSwipe={onSwipe} /> */}
               <JobOffer
                 dbOffer={offersBD[currentIndex]}
                 onSwipe={onSwipe}
