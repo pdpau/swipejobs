@@ -50,6 +50,7 @@ type Props = {
 export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping, lastSwipe }: Props) {
     /* --- Variables --- */
     const [offer, setOffer] = useState<OfferType | null>(null);
+    
 
     /* --- Functions --- */
     useEffect(() => {

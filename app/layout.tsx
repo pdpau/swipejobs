@@ -20,7 +20,7 @@ export default function RootLayout({ children, }: Readonly<{children: React.Reac
 
         {/* Estilo de la ola */}
         <div className="absolute bottom-0 left-0 w-full">
-          <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 20 150 28" preserveAspectRatio="none" shape-rendering="auto">
+          <svg className="waves" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 20 150 28" preserveAspectRatio="none" shapeRendering="auto">
             <defs>
               {/* <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /> */} {/* viewBox 0 24 150 28 */}
               <path id="gentle-wave" d="M-160 44c30 0 58-20 88-20s 58 20 88 20 58-20 88-20 58 20 88 20 v60h-352z" /> {/* viewBox 0 24 150 40 */}
