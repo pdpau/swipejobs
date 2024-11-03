@@ -91,21 +91,23 @@ export default function RegisterPage() {
     const { error } = await supabase
       .from('users')
       .insert({ username: name, surname: surname, created_at: new Date(), mail: email, telephone: tlf, })
+      .select();
     if (error) {
-      const { data, error2 } = await supabase
-        .from('users')
-        .select()
-        .eq('mail', email); // Filtrar por email
-      if (!error2) {
-        // console.error('Error selecting user by email FINAL:', error.message);
-        toast.error('Aquest correu ja està en ús');
+      if (error.code === '23505') { // Código de error de violación de unicidad en Postgres
+        const { data: existingUser, error: fetchError } = await supabase
+          .from('users')
+          .select()
+          .eq('mail', email);
+
+        if (fetchError) {
+          toast.error('Error al verificar el correo');
+          return;
+        }
+        toast.error('Aquest correu o numero de telefon ja està en ús');
         return;
       }
-      else{
-        // console.error('Error registering user:', error.message);
-        toast.error('Error al crear un usuario')
-        // Maneja el error si el email ya está registrado o cualquier otro problema
-      }
+      toast.error('Error al crear un usuario');
+      return;
     } else {
       const { data, error2 } = await supabase
         .from('users')
@@ -136,7 +138,7 @@ export default function RegisterPage() {
 
       <LogoZ
         className={cn(
-          "absolute top-[8%] left-1/2 transform -translate-x-1/2", 
+          "absolute top-[8%] left-1/2 transform -translate-x-1/2",
           "h-16 w-16",
           "max-h-logo-register-first:top-[5%] max-h-logo-register-second:hidden max-h-logo-register-big:top-[23%]"
         )}
@@ -240,10 +242,10 @@ export default function RegisterPage() {
                 </div>
 
                 <DialogFooter>
-                  <GreenButton 
-                    text="Acceptar" 
-                    type="button" 
-                    onClickFunction={() => { setConditionsAccepted(true); setDialogOpen(false); }} 
+                  <GreenButton
+                    text="Acceptar"
+                    type="button"
+                    onClickFunction={() => { setConditionsAccepted(true); setDialogOpen(false); }}
                   />
                 </DialogFooter>
               </DialogContent>
@@ -255,11 +257,11 @@ export default function RegisterPage() {
 
         {/* Submit button */}
         <div className="w-4/5 flex justify-center">
-            <GreenButton 
-              text="Registrar Dades" 
-              type="submit" 
-              onClickFunction={handleRegister} 
-            /> {/* Working well !! */}
+          <GreenButton
+            text="Registrar Dades"
+            type="submit"
+            onClickFunction={handleRegister}
+          /> {/* Working well !! */}
         </div>
       </div>
     </main>

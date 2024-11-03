@@ -8,6 +8,7 @@ import { GreenButton } from "./components/buttons/GreenButton";
 
 /* Import logos */
 import VibezFestival from "./public/vibez_festival.svg";
+import Link from "next/link";
 
 
 export default function Home() {
@@ -15,7 +16,7 @@ export default function Home() {
   // console.log("ID Guardat: " + localStorage.getItem('userId')); // TODO: Revisar per que dona error
   const handleChangePage = async () => {
     localStorage.setItem('userId', "");
-    router.push('/register-page'); // Redirigir a /offers-page
+    // router.push('/register-page'); // Redirigir a /offers-page
   };
 
   return (
@@ -45,9 +46,12 @@ export default function Home() {
             Després del registre veuràs una sèrie d'ofertes de treball, tria les que més t'agradin i t'enviarem el recull.
           </p>
           <div className="text-center mt-6">
-              <GreenButton text="Registrar-se" type="button" 
+            <Link href="/register-page">
+            <GreenButton text="Registrar-se" type="button" 
               onClickFunction={handleChangePage}
               />
+            </Link>
+              
           </div>
         </div>
       </main>

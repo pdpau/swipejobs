@@ -12,6 +12,7 @@ import { JobOffer } from '../components/JobOffer';
 import { PaginationDots } from '../components/PaginationDots';
 import { GreenButton } from "../components/buttons/GreenButton";
 
+import toast, { Toaster } from 'react-hot-toast';
 
 import { OfferType } from "../types";
 import { listOfOffersExample } from "../consts";
@@ -54,15 +55,19 @@ export default function OffersPage() {
   }
 
   const fetchOffers = async () => {
+    setLoading(true); // Muestra el loader antes de la consulta
     const { data, error } = await supabase
       .from('Offers') // Asegúrate de que este sea el nombre exacto de tu tabla
-      .select(); // Selecciona todas las columnas
+      .select(); // Selecciona todas las columnas (considera especificar columnas si es posible)
+  
     if (error) {
       console.error("Error fetching offers:", error.message);
+      toast.error('Error al cargar las ofertas. Intenta nuevamente.'); // Muestra un mensaje al usuario
     } else {
       setOffersBD(data); // Guarda las ofertas en el estado
       // console.log(data);
     }
+    
     setLoading(false); // Oculta el loader una vez que los datos han sido cargados
   };
 
@@ -99,32 +104,42 @@ export default function OffersPage() {
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0) {
       const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
-      // console.log('Actual Global Offer: '+ actualGlobalOffer);
       const currentOffer = offers[currentIndex];
-
+  
+      if (!currentOffer) {
+        console.error("No se encontró la oferta actual.");
+        return;
+      }
+  
       if (direction === "right") {
         if (userId) {
           const { data, error } = await supabase
             .from('users_offers') // Nombre de tu tabla
-            .insert([
-              { idUser: userId, idOffer: currentOffer.id } // Inserción de datos
-            ]);
-
+            .insert([{ idUser: userId, idOffer: currentOffer.id }]);
+  
           if (error) {
             console.error("Error inserting into user_offers:", error.message);
+            toast.error('Error al registrar el like.'); // Muestra un mensaje al usuario
+            return; // Salir si hay error
           } else {
             console.log("Like registrado correctamente:", data);
+            toast.success('Oferta guardada correctamente!'); // Mensaje de éxito
           }
         } else {
           console.error("No se ha encontrado un userId válido.");
+          toast.error('Necesitas iniciar sesión para guardar la oferta.'); // Mensaje para el usuario
+          return;
         }
       } else if (direction === "left") {
-        // console.log(`Passed on: ${currentOffer.title}`);
+        // Aquí puedes agregar lógica para manejar el "swipe" hacia la izquierda si es necesario
+        console.log(`Passed on: ${currentOffer.title}`);
       }
-
-      /* Actualitzem index i si no hi ha mes ofertes -> anar a thankyou-page */
+  
+      // Actualiza el índice y verifica si hay más ofertas
       const nextIndex = currentIndex + 1;
-    localStorage.setItem('globalOfferIndex', nextIndex.toString()); // Guarda el nuevo índice en globalOfferIndex
+      localStorage.setItem('globalOfferIndex', nextIndex.toString());
+  
+      // Esperar un tiempo antes de proceder
       setTimeout(() => {
         if (nextIndex > offersBD.length - 1) { // Si no hay más ofertas
           console.log("No more offers");
@@ -135,7 +150,7 @@ export default function OffersPage() {
         }
       }, 500);
     }
-  }
+  };
 
   /* TODO: Si es refresca la pagina torna a la primera oferta (arreglar sobreescribint ofertes o continuant des d'on s'ha quedat) */
   if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) { /* ¿¿¿¿ || localStorage === undefined  ???? */
