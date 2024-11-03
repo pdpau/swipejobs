@@ -61,7 +61,7 @@ export default function OffersPage() {
       console.error("Error fetching offers:", error.message);
     } else {
       setOffersBD(data); // Guarda las ofertas en el estado
-      console.log(data);
+      // console.log(data);
     }
     setLoading(false); // Oculta el loader una vez que los datos han sido cargados
   };
@@ -88,7 +88,7 @@ export default function OffersPage() {
     const savedIndex = localStorage.getItem('globalOfferIndex');
     if (savedIndex && !isNaN(Number(savedIndex))) {
       setCurrentIndex(Number(savedIndex)); // Establece el índice inicial desde globalOfferIndex
-      console.log('Index actual: ' + currentIndex)
+      // console.log('Index actual: ' + currentIndex)
     }
 
     /* Pillar les ofertes de la DB */
@@ -99,7 +99,7 @@ export default function OffersPage() {
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0) {
       const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
-      console.log('Actual Global Offer: '+ actualGlobalOffer);
+      // console.log('Actual Global Offer: '+ actualGlobalOffer);
       const currentOffer = offers[currentIndex];
 
       if (direction === "right") {
@@ -119,7 +119,7 @@ export default function OffersPage() {
           console.error("No se ha encontrado un userId válido.");
         }
       } else if (direction === "left") {
-        console.log(`Passed on: ${currentOffer.title}`);
+        // console.log(`Passed on: ${currentOffer.title}`);
       }
 
       /* Actualitzem index i si no hi ha mes ofertes -> anar a thankyou-page */
@@ -159,7 +159,7 @@ export default function OffersPage() {
       </main>
     );
   } else {
-    console.log("userId:", userId); /* TODO: Borrar el log */
+    // console.log("userId:", userId); /* TODO: Borrar el log */
     return (
       <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
         <LogoZ

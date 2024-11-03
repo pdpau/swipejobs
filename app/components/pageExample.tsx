@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 
-import { Button } from "@/components/ui/button";
-
 import { supabase } from '../../lib/supabaseClient';
 import { useState } from 'react';
 
@@ -23,7 +21,7 @@ export default function Home() {
         if (error) {
             console.error('Error fetching users:', error);
         } else {
-            console.log('Users:', data); // Muestra los datos en la consola
+            // console.log('Users:', data); // Muestra los datos en la consola
         }
     };
     return (

@@ -20,7 +20,7 @@ import { BsFillClockFill } from "react-icons/bs";
 /* Helper function */
 const transformDataToOfferType = (dbData: any): OfferType | null => {
     if (!dbData) return null;
-    console.log("DB Data:", dbData);
+    // console.log("DB Data:", dbData);
     return {
         id: dbData.id || 0,
         companyName: dbData.companyName || "Unknown Company", 
@@ -56,7 +56,7 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
     useEffect(() => {
         const mappedOffer = transformDataToOfferType(dbOffer);
         setOffer(mappedOffer);
-        console.log("Offer:", mappedOffer);
+        // console.log("Offer:", mappedOffer);
     }, [dbOffer]);
 
     /* Swipeable */
