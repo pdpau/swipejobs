@@ -82,11 +82,11 @@ export default function RegisterPage() {
     /* TODO: Add user to DB */
     //  /* TODO: Exception if email already registered */
     //  /* TODO: ... */
-    console.log("Registering user...");
-    console.log("Name:", name);
-    console.log("Surname:", surname);
-    console.log("Email:", email);
-    console.log("Tlf:", tlf);
+    // console.log("Registering user...");
+    // console.log("Name:", name);
+    // console.log("Surname:", surname);
+    // console.log("Email:", email);
+    // console.log("Tlf:", tlf);
 
     const { error } = await supabase
       .from('users')
@@ -121,8 +121,8 @@ export default function RegisterPage() {
         setUserId(insertedUserId);
         // Guardar el ID en localStorage
         localStorage.setItem('userId', insertedUserId);
-        console.log('Data Retrieved:', data);
-        console.log('User registered with ID:', insertedUserId);
+        // console.log('Data Retrieved:', data);
+        // console.log('User registered with ID:', insertedUserId);
         router.push('/offers-page'); // Redirigir a /offers-page
       }
       console.log('User registered successfully:');

@@ -1,25 +1,18 @@
 "use client"
 
-import Image from "next/image";
-import Link from "next/link";
-
 import { cn } from "@/lib/utils";
 import { useRouter } from "next/navigation";
 
 
 import { GreenButton } from "./components/buttons/GreenButton";
-import { PinkButton } from "./components/buttons/PinkButton";
 
 /* Import logos */
-import Vibez from "./public/vibez.svg";
 import VibezFestival from "./public/vibez_festival.svg";
-import LogoZ from "./public/logo_z.svg";
-import Youz from "./public/youz.svg";
 
 
 export default function Home() {
   const router = useRouter();
-  console.log("ID Guardat: " + localStorage.getItem('userId')); // TODO: Revisar per que dona error
+  // console.log("ID Guardat: " + localStorage.getItem('userId')); // TODO: Revisar per que dona error
   const handleChangePage = async () => {
     localStorage.setItem('userId', "");
     router.push('/register-page'); // Redirigir a /offers-page

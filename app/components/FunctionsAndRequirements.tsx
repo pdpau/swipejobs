@@ -47,18 +47,6 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                                 ))}
                                 {/* <li key={index}>{item}</li> */}
                             </ul>
-                            <ul className="list-none">
-                                {list.map((item, index) => (
-                                    <ListItem key={index} item={item} color="text-vibezpink-600" /> /* color={titleColor} */
-                                ))}
-                                {/* <li key={index}>{item}</li> */}
-                            </ul>
-                            <ul className="list-none">
-                                {list.map((item, index) => (
-                                    <ListItem key={index} item={item} color="text-vibezpink-600" /> /* color={titleColor} */
-                                ))}
-                                {/* <li key={index}>{item}</li> */}
-                            </ul>
                         </DialogDescription>
                     </div>
                     <DialogFooter>
