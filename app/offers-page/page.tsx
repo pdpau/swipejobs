@@ -32,7 +32,7 @@ export default function OffersPage() {
   const [userId, setUserId] = useState<number | null>(null); // userId as number or null
   const [loading, setLoading] = useState(true); // Estado para mostrar un loader si es necesario
   const [currentIndex, setCurrentIndex] = useState(0); // Index de la oferta actual
-
+  
   /* Swipeable */
   const [isSwiping, setIsSwiping] = useState(false);
   const [lastSwipe, setLastSwipe] = useState<string | null>(null);
@@ -83,6 +83,14 @@ export default function OffersPage() {
     } else {
       console.log("No se encontró userId en localStorage o está vacío");
     }
+
+    // Verifica si existe un índice guardado en globalOfferIndex
+    const savedIndex = localStorage.getItem('globalOfferIndex');
+    if (savedIndex && !isNaN(Number(savedIndex))) {
+      setCurrentIndex(Number(savedIndex)); // Establece el índice inicial desde globalOfferIndex
+      console.log('Index actual: ' + currentIndex)
+    }
+
     /* Pillar les ofertes de la DB */
     fetchOffers();
   }, []);
@@ -90,6 +98,8 @@ export default function OffersPage() {
 
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0) {
+      const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
+      console.log('Actual Global Offer: '+ actualGlobalOffer);
       const currentOffer = offers[currentIndex];
 
       if (direction === "right") {
@@ -114,9 +124,11 @@ export default function OffersPage() {
 
       /* Actualitzem index i si no hi ha mes ofertes -> anar a thankyou-page */
       const nextIndex = currentIndex + 1;
+    localStorage.setItem('globalOfferIndex', nextIndex.toString()); // Guarda el nuevo índice en globalOfferIndex
       setTimeout(() => {
         if (nextIndex > offersBD.length - 1) { // Si no hay más ofertas
           console.log("No more offers");
+          localStorage.setItem('globalOfferIndex', '0');
           router.push("/thankyou-page");
         } else {
           setCurrentIndex(nextIndex);

@@ -36,6 +36,7 @@ export default function RegisterPage() {
   const [userId, setUserId] = useState(null);
   const router = useRouter();
 
+  localStorage.setItem('globalOfferIndex', '0');
 
   /* Functions */
   const validateEmail = (email: string) => {
