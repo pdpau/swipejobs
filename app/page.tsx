@@ -1,7 +1,6 @@
 "use client"
 
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 
 
 import { GreenButton } from "./components/buttons/GreenButton";
@@ -42,7 +41,7 @@ export default function Home() {
             FES MATCH AMB OFERTES DE TREBALL
           </h3>
           <p className="text-center text-xl text-slate-800">
-            Després del registre veuràs una sèrie d'ofertes de treball, tria les que més t'agradin i t'enviarem el recull.
+            Després del registre veuràs una sèrie d&apos;ofertes de treball, tria les que més t&apos;agradin i t&apos;enviarem el recull.
           </p>
           <div className="text-center mt-6">
             <Link href="/register-page">

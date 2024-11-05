@@ -33,7 +33,7 @@ export default function RegisterPage() {
   const [conditionsAccepted, setConditionsAccepted] = useState(false);
 
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
   const router = useRouter();
 
   localStorage.setItem('globalOfferIndex', '0');
@@ -94,11 +94,11 @@ export default function RegisterPage() {
       .select();
     if (error) {
       if (error.code === '23505') { // Código de error de violación de unicidad en Postgres
-        const { data: existingUser, error: fetchError } = await supabase
+        const { error: fetchError } = await supabase
           .from('users')
           .select()
           .eq('mail', email);
-
+        
         if (fetchError) {
           toast.error('Error al verificar el correo');
           return;
@@ -120,7 +120,7 @@ export default function RegisterPage() {
       } else {
         toast.success('User Registered Succesfully!');
         const insertedUserId = data[0].id;
-        setUserId(insertedUserId);
+        // setUserId(insertedUserId);
         // Guardar el ID en localStorage
         localStorage.setItem('userId', insertedUserId);
         // console.log('Data Retrieved:', data);
@@ -221,17 +221,17 @@ export default function RegisterPage() {
             className="w-5 h-5 mr-2 text-vibezgreen-400 bg-transparent border border-slate-100"
           />
           <label htmlFor="accept-conditions" className="text-sm text-slate-100">
-            Accepto les condicions d'ús i la política de privacitat
+            Accepto les condicions d&apos;ús i la política de privacitat
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}> {/* TODO: ¿¿ Dialog background white or slate ?? */}
               <DialogTrigger asChild>
                 <button className="underline text-vibezgreen-400">
-                  Termes i Condicions d'Ús i Política de Privacitat
+                  Termes i Condicions d&apos;Ús i Política de Privacitat
                 </button>
               </DialogTrigger>
               <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-100", "rounded-2xl shadow-lg")}>
                 <DialogHeader>
                   <DialogTitle className="text-slate-950">
-                    Termes i Condicions d'Ús i Política de Privacitat
+                    Termes i Condicions d&apos;Ús i Política de Privacitat
                   </DialogTitle>
                 </DialogHeader>
                 {/* Contenedor scrollable */}
