@@ -1,19 +1,17 @@
 "use client";
 
 /* Imports */
-import { useState } from "react";
 
-import Link from "next/link";
+//import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
 import { GreenButton } from "../components/buttons/GreenButton";
-import { PinkButton } from "../components/buttons/PinkButton";
 
 /* Import logos */
 import Vibez from "../public/vibez.svg";
-import VibezFestival from "../public/vibez_festival.svg";
+//import VibezFestival from "../public/vibez_festival.svg";
 
 
 /* Main component */
@@ -35,7 +33,18 @@ export default function ThankYouPage() {
         "overflow-auto no-scrollbar"
       )}
     >
-      {/* TODO: ¿¿ Posar Vibez o VibezFestival ?? */}
+      {/* Sticker Axel */}
+      {/* <div className="absolute top-5 left-5 h-10 w-10">
+        <img src="../public/prova.png" alt="foto axel" />
+      </div> */}
+      {/* <Image
+        src="../public/prova.png"
+        alt="foto axel"
+        width={40}
+        height={40}
+        className="absolute top-5 left-5"
+      /> */}
+      {/* Logo Vibez */}
       <Vibez 
         className={cn(
           "absolute top-20 left-1/2 transform -translate-x-1/2", 
@@ -43,6 +52,7 @@ export default function ThankYouPage() {
           "max-h-logo-main-first:top-10 max-h-logo-main-second:hidden"
         )}
       />
+      {/* Main */}
       <div className={cn("h-full w-5/6", "flex flex-col justify-center items-center", "space-y-6")}>
         <h1 className="text-center text-4xl font-extrabold text-slate-950">
           GRÀCIES PER PARTICIPAR!

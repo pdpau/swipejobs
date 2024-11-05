@@ -1,14 +1,13 @@
 "use client";
 
 /* Imports */
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 
 import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
 import { ListItem } from "./ListItem";
-import { GreenButton } from "./buttons/GreenButton";
 import { PinkButton } from "./buttons/PinkButton";
 
 /* Props */
@@ -21,11 +20,6 @@ type Props = {
 export function FunctionsAndRequirements({ list, title }: Props) {
     /* Variables */
     const [dialogOpen, setDialogOpen] = useState(false);
-
-    /* Condicionales de estilos (no se estan usando) */
-    const isFunctions = title.toLowerCase() === "funcions";
-    const dialogColor = isFunctions ? "bg-vibezpink-600 hover:bg-vibezpink-700" : "bg-vibezgreen-400 hover:bg-vibezgreen-500";
-    const titleColor = isFunctions ? "text-vibezpink-600" : "text-vibezgreen-400";
 
     return (
         <main>

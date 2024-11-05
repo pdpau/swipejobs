@@ -13,7 +13,6 @@ type Props = {
 
 /* Main component */
 export function PaginationDots({ totalOffers, currentIndex }: Props) {
-    const maxVisibleDots = 5;
     let start = Math.max(currentIndex - 2, 0);
     let end = Math.min(currentIndex + 2, totalOffers - 1);
 

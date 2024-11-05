@@ -2,7 +2,6 @@
 
 
 /* Import icons */
-import { FaCheckCircle } from "react-icons/fa";
 import { SiListmonk } from "react-icons/si";
 
 type Props = {

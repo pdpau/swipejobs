@@ -2,7 +2,6 @@
 
 /* Imports */
 
-import { cn } from "@/lib/utils";
 
 type Props = {
     text: string;
