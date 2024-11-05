@@ -12,7 +12,7 @@ import { JobOffer } from '../components/JobOffer';
 import { PaginationDots } from '../components/PaginationDots';
 import { GreenButton } from "../components/buttons/GreenButton";
 
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 import { OfferType } from "../types";
 import { listOfOffersExample } from "../consts";
@@ -28,8 +28,8 @@ export default function OffersPage() {
   const router = useRouter();
 
   /* Variables  */
-  const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
-  const [offersBD, setOffersBD] = useState<any>(); // Aquí se guardarán las ofertas
+  //const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
+  const [offersBD, setOffersBD] = useState<any>(); // TODO: Revisar type any    // Aquí se guardarán las ofertas
   const [userId, setUserId] = useState<number | null>(null); // userId as number or null
   const [loading, setLoading] = useState(true); // Estado para mostrar un loader si es necesario
   const [currentIndex, setCurrentIndex] = useState(0); // Index de la oferta actual
@@ -104,7 +104,7 @@ export default function OffersPage() {
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0) {
       const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
-      const currentOffer = offers[currentIndex];
+      const currentOffer = offersBD[currentIndex];
   
       if (!currentOffer) {
         console.error("No se encontró la oferta actual.");

@@ -2,7 +2,6 @@
 
 /* Imports */
 import { useEffect, useState } from "react";
-import TinderCard from "react-tinder-card";
 import { useSwipeable } from "react-swipeable";
 
 import { OfferType } from "../types";
@@ -81,7 +80,7 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
     /* End of swipeable */
 
 
-    if (!offer) return <div className="text-slate-100 text-xl font-bold">Carregant l'oferta...</div>;
+    if (!offer) return <div className="text-slate-100 text-xl font-bold">Carregant oferta...</div>;
     return (
         <div
             {...handlers}

@@ -1,20 +1,17 @@
 "use client";
 
 /* Imports */
-import { useState } from "react";
 
-import Link from "next/link";
-import Image from "next/image";
+//import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
 import { GreenButton } from "../components/buttons/GreenButton";
-import { PinkButton } from "../components/buttons/PinkButton";
 
 /* Import logos */
 import Vibez from "../public/vibez.svg";
-import VibezFestival from "../public/vibez_festival.svg";
+//import VibezFestival from "../public/vibez_festival.svg";
 
 
 /* Main component */
