@@ -14,9 +14,6 @@ import { GreenButton } from "../components/buttons/GreenButton";
 
 import toast from 'react-hot-toast';
 
-import { OfferType } from "../types";
-import { listOfOffersExample } from "../consts";
-
 import { TiTick, TiTimes } from 'react-icons/ti';
 
 /* Import logos */
@@ -37,7 +34,7 @@ export default function OffersPage() {
   /* Swipeable */
   const [isSwiping, setIsSwiping] = useState(false);
   const [lastSwipe, setLastSwipe] = useState<string | null>(null);
-  const [storedUserId, setstoredUserId] = useState<number | null>(null);
+  // const [storedUserId, setstoredUserId] = useState<number | null>(null);
   const handleSwipeStart = (direction: string) => {
     setIsSwiping(true);
     setLastSwipe(direction);
@@ -81,7 +78,7 @@ export default function OffersPage() {
 
       if (!isNaN(parsedUserId)) {
         setUserId(parsedUserId); // Guardar el userId en el estado si es un número válido
-        setstoredUserId(parsedUserId); // Guardar en storedUserId también
+        // setstoredUserId(parsedUserId); // Guardar en storedUserId también
       } else {
         console.log("userId no es un número válido");
       }
@@ -103,7 +100,7 @@ export default function OffersPage() {
 
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0) {
-      const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
+      // const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
       const currentOffer = offersBD[currentIndex];
   
       if (!currentOffer) {
@@ -165,7 +162,7 @@ export default function OffersPage() {
         />
         <div className={cn("h-full w-5/6", "flex flex-col justify-center items-center", "space-y-6")}>
           <h3 className="text-center text-4xl font-extrabold text-slate-950">
-            REGISTRA'T PER VEURE LES OFERTES
+            REGISTRA&apos;T PER VEURE LES OFERTES
           </h3>
           <div className="text-center mt-6">
             <GreenButton text="Registrar-se" type="button" onClickFunction={handleChangePage} />

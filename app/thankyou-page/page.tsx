@@ -58,7 +58,7 @@ export default function ThankYouPage() {
           GRÀCIES PER PARTICIPAR!
         </h1>
         <p className="text-center text-xl text-slate-800">
-          T'enviarem el recull d'ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
+          T&apos;enviarem el recull d&apos;ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
         </p>
         <div className="text-center mt-6">
             <GreenButton text="Tornar a la pàgina principal" type="button" 
