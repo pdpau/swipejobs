@@ -12,7 +12,6 @@ import Link from "next/link";
 
 
 export default function Home() {
-  const router = useRouter();
   // console.log("ID Guardat: " + localStorage.getItem('userId')); // TODO: Revisar per que dona error
   const handleChangePage = async () => {
     localStorage.setItem('userId', "");
