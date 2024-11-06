@@ -32,7 +32,7 @@ export default function RegisterPage() {
   const [tlf, setTlf] = useState("");
   const [conditionsAccepted, setConditionsAccepted] = useState(false);
 
-  const [dialogOpen, setDialogOpen] = useState(false);
+  // const [dialogOpen, setDialogOpen] = useState(false);
   // const [userId, setUserId] = useState(null);
   const router = useRouter();
 
