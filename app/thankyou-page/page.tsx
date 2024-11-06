@@ -2,15 +2,17 @@
 
 /* Imports */
 
-//import Image from "next/image";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
+
+import { useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 import { GreenButton } from "../components/buttons/GreenButton";
 
 /* Import logos */
-import Vibez from "../public/vibez.svg";
+import Vibez from "../../public/vibez.svg";
 //import VibezFestival from "../public/vibez_festival.svg";
 
 
@@ -22,7 +24,17 @@ export default function ThankYouPage() {
   const handleGoBack = async () => {
     localStorage.setItem('userId', "");
     router.push('/');
-  } 
+  };
+
+  const [showAxel, setShowAxel] = useState(false);
+  const handleGoBackAxel = async () => {
+    setShowAxel(true);
+    setTimeout(() => {
+      localStorage.setItem('userId', "");
+      router.push('/');
+      setShowAxel(false); // necessari??
+    }, 1000);
+  };
 
   return (
     <main 
@@ -34,16 +46,16 @@ export default function ThankYouPage() {
       )}
     >
       {/* Sticker Axel */}
-      {/* <div className="absolute top-5 left-5 h-10 w-10">
-        <img src="../public/prova.png" alt="foto axel" />
-      </div> */}
-      {/* <Image
-        src="../public/prova.png"
-        alt="foto axel"
-        width={40}
-        height={40}
-        className="absolute top-5 left-5"
-      /> */}
+      <div onClick={handleGoBackAxel} className="absolute top-20 left-6 h-1 w-1 cursor-pointer bg-transparent" style={{ zIndex: 1000 }} />
+      {showAxel && (
+        <Image
+          src="/axel.jpg"
+          alt="fotoaxel"
+          width={screen.width}
+          height={screen.height}
+          className="absolute top-0 left-0 z-50"
+        />
+      )}
       {/* Logo Vibez */}
       <Vibez 
         className={cn(
