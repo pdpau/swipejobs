@@ -19,10 +19,14 @@ import Vibez from "../../public/vibez.svg";
 /* Main component */
 export default function ThankYouPage() {
   const router = useRouter();
-  localStorage.setItem('userId', "");
+  if (typeof window !== "undefined") {
+    localStorage.setItem('userId', "");
+  }
 
   const handleGoBack = async () => {
-    localStorage.setItem('userId', "");
+    if (typeof window !== "undefined") {
+      localStorage.setItem('userId', "");
+    }
     router.push('/');
   };
 
@@ -30,7 +34,9 @@ export default function ThankYouPage() {
   const handleGoBackAxel = async () => {
     setShowAxel(true);
     setTimeout(() => {
-      localStorage.setItem('userId', "");
+      if (typeof window !== "undefined") {
+        localStorage.setItem('userId', "");
+      }
       router.push('/');
       setShowAxel(false); // necessari??
     }, 1000);

@@ -36,7 +36,9 @@ export default function RegisterPage() {
   // const [userId, setUserId] = useState(null);
   const router = useRouter();
 
-  localStorage.setItem('globalOfferIndex', '0');
+  if (typeof window !== "undefined") {
+    localStorage.setItem('globalOfferIndex', '0');
+  }
 
   /* Functions */
   const validateEmail = (email: string) => {
@@ -122,7 +124,9 @@ export default function RegisterPage() {
         const insertedUserId = data[0].id;
         // setUserId(insertedUserId);
         // Guardar el ID en localStorage
-        localStorage.setItem('userId', insertedUserId);
+        if (typeof window !== "undefined") {
+          localStorage.setItem('userId', insertedUserId);
+        }
         // console.log('Data Retrieved:', data);
         // console.log('User registered with ID:', insertedUserId);
         router.push('/offers-page'); // Redirigir a /offers-page
