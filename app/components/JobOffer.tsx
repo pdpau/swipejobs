@@ -4,10 +4,9 @@
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 
-import { OfferType } from "../types";
-
 import { cn } from "@/lib/utils";
 
+import { OfferType } from "../types";
 import { FunctionsAndRequirements } from "./FunctionsAndRequirements";
 
 /* Icons */

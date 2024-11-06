@@ -164,7 +164,7 @@ export default function OffersPage() {
   };
 
   if (typeof window !== "undefined") { // ESPEREM A QUE EL CONTIGUT ESTIGUI CARREGAT A LA PART DEL CLIENT
-    if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) { /* ¿¿¿¿ || localStorage === undefined  ???? */
+    if (localStorage.getItem('userId') === "" || localStorage.getItem('userId') === null) {
       return (
         <main className="h-screen w-screen bg-slate-100 flex justify-center items-center">
           <LogoZ
@@ -185,7 +185,6 @@ export default function OffersPage() {
         </main>
       );
     } else {
-      // console.log("userId:", userId); /* TODO: Borrar el log */
       return (
         <main className="h-screen w-screen bg-slate-950 flex justify-center items-center">
           <LogoZ

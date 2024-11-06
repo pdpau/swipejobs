@@ -3,7 +3,6 @@
 /* Imports */
 
 
-
 /* Main component */
 export function TermsAndConditions() {
     return (

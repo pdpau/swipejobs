@@ -3,7 +3,6 @@
 /* Imports */
 import { useState } from "react";
 
-
 import { cn } from "@/lib/utils";
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
@@ -29,7 +28,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                 </DialogTrigger>
                 <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-800 text-slate-200 rounded-2xl shadow-lg")}>
                     <DialogHeader>
-                        <DialogTitle className={`text-3xl font-extrabold text-vibezpink-600`}> {/* ${titleColor} */}
+                        <DialogTitle className={`text-3xl font-extrabold text-vibezpink-600`}>
                             {title}
                         </DialogTitle>
                     </DialogHeader>
@@ -37,9 +36,8 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                         <DialogDescription>
                             <ul className="list-none">
                                 {list.map((item, index) => (
-                                    <ListItem key={index} item={item} color="text-vibezpink-600" /> /* color={titleColor} */
+                                    <ListItem key={index} item={item} color="text-vibezpink-600" />
                                 ))}
-                                {/* <li key={index}>{item}</li> */}
                             </ul>
                         </DialogDescription>
                     </div>

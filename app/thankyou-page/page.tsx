@@ -1,7 +1,6 @@
 "use client";
 
 /* Imports */
-
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -13,7 +12,6 @@ import { GreenButton } from "../components/buttons/GreenButton";
 
 /* Import logos */
 import Vibez from "../../public/vibez.svg";
-//import VibezFestival from "../public/vibez_festival.svg";
 
 
 /* Main component */
@@ -79,8 +77,7 @@ export default function ThankYouPage() {
           T&apos;enviarem el recull d&apos;ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
         </p>
         <div className="text-center mt-6">
-            <GreenButton text="Tornar a la pàgina principal" type="button" 
-            onClickFunction={handleGoBack}/>
+          <GreenButton text="Tornar a la pàgina principal" type="button" onClickFunction={handleGoBack} />
         </div>
       </div>
     </main>

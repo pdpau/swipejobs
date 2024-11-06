@@ -40,7 +40,7 @@ export function PaginationDots({ totalOffers, currentIndex }: Props) {
             {visibleOffers.map((index) => (
                 <div key={index} className="flex justify-center items-center">
                     {index === currentIndex ? (
-                        // El punto actual con número y borde
+                        /* El punto actual con número y borde */
                         <div 
                             className={cn(
                                 "w-[48px] h-[32px]", 
@@ -53,7 +53,7 @@ export function PaginationDots({ totalOffers, currentIndex }: Props) {
                             {showText && (<span className="text-md font-bold text-slate-800">{`${index+1} / ${totalOffers}`}</span>) }
                         </div>
                     ) : (
-                        // Puntos vacíos
+                        /* Puntos vacios */
                         <div 
                             className={cn(
                                 "w-[18px] h-[18px]",
