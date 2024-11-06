@@ -17,7 +17,7 @@ import { BsFillClockFill } from "react-icons/bs";
 
 
 /* Helper function */
-const transformDataToOfferType = (dbData: any): OfferType | null => {
+const transformDataToOfferType = (dbData: OfferType): OfferType | null => {
     if (!dbData) return null;
     // console.log("DB Data:", dbData);
     return {
@@ -30,14 +30,14 @@ const transformDataToOfferType = (dbData: any): OfferType | null => {
         description: dbData.description || "No description available",
         
         // Accedemos directamente a los arrays
-        functions: dbData.functions.functions || ["No functions provided"],
-        requirements: dbData.requirements.requirements || ["No requirements provided"]
+        functions: dbData.functions || ["No functions provided"],
+        requirements: dbData.requirements || ["No requirements provided"]
     };
 };
 
 /* Props */
 type Props = {
-    dbOffer: any;
+    dbOffer: OfferType;
     onSwipe: (direction: string) => void;
     onSwipeStart: (direction: string) => void;
     onSwipeEnd: () => void;

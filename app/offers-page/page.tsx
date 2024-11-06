@@ -18,6 +18,7 @@ import { TiTick, TiTimes } from 'react-icons/ti';
 
 /* Import logos */
 import LogoZ from "../public/logo_z.svg";
+import { OfferType } from '../types';
 
 
 /* Main component */
@@ -26,7 +27,7 @@ export default function OffersPage() {
 
   /* Variables  */
   //const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
-  const [offersBD, setOffersBD] = useState<any>(); // TODO: Revisar type any    // Aquí se guardarán las ofertas
+  const [offersBD, setOffersBD] = useState<OfferType[] | undefined>(); // TODO: Revisar type any    // Aquí se guardarán las ofertas
   const [userId, setUserId] = useState<number | null>(null); // userId as number or null
   const [loading, setLoading] = useState(true); // Estado para mostrar un loader si es necesario
   const [currentIndex, setCurrentIndex] = useState(0); // Index de la oferta actual
@@ -99,7 +100,7 @@ export default function OffersPage() {
 
 
   const onSwipe = async (direction: string) => {
-    if (currentIndex !== null && currentIndex >= 0) {
+    if (currentIndex !== null && currentIndex >= 0 && offersBD) { // Comprovem que offersBD no sigui undefined
       // const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
       const currentOffer = offersBD[currentIndex];
   
@@ -185,7 +186,7 @@ export default function OffersPage() {
         {loading ? (
           <p className="text-slate-100 text-xl font-bold">Carregant ofertes...</p>
         ) : (
-          currentIndex !== null && currentIndex >= 0 && (
+          currentIndex !== null && currentIndex >= 0 && offersBD && ( // Comprovem que offersBD no sigui undefined
             <div className="w-screen h-screen flex flex-col justify-center items-center">
               <JobOffer
                 dbOffer={offersBD[currentIndex]}
