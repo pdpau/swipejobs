@@ -17,7 +17,7 @@ import toast from 'react-hot-toast';
 import { TiTick, TiTimes } from 'react-icons/ti';
 
 /* Import logos */
-import LogoZ from "../public/logo_z.svg";
+import LogoZ from "../../public/logo_z.svg";
 import { OfferType } from '../types';
 
 

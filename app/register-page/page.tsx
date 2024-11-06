@@ -19,8 +19,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { GreenButton } from "../components/buttons/GreenButton";
 
 /* Import logos */
-import LogoZ from "../public/logo_z.svg";
-import Youz from "../public/youz.svg";
+import LogoZ from "../../public/logo_z.svg";
+import Youz from "../../public/youz.svg";
 
 
 /* Main component */

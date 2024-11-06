@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { GreenButton } from "./components/buttons/GreenButton";
 
 /* Import logos */
-import VibezFestival from "./public/vibez_festival.svg";
+import VibezFestival from "../public/vibez_festival.svg";
 import Link from "next/link";
 
 
