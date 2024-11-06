@@ -6,13 +6,13 @@ import { supabase } from '../../lib/supabaseClient';
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-import { TermsAndConditions } from '../components/TermsAndConditions';
+//import { TermsAndConditions } from '../components/TermsAndConditions';
 
 import { cn } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+//import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -52,18 +52,6 @@ export default function RegisterPage() {
   };
 
   const handleRegister = async () => {
-    // Validaciones
-    // if(email != null){
-    //   const { data, error2 } = await supabase
-    //     .from('users')
-    //     .select()
-    //     .eq('mail', email); // Filtrar por email
-    //   if (!error2) {
-    //     console.log("SALTA ERROR MAIL Principi")
-    //     toast.error('Aquest correu ja està registrat')
-    //     return
-    //   }
-    // }
     if (!name || !surname || !email || !tlf) {
       toast.error('Cap camp pot estar buit');
       return;
@@ -80,15 +68,6 @@ export default function RegisterPage() {
       toast.error('Has de acceptar els termes i condicions');
       return;
     }
-
-    /* TODO: Add user to DB */
-    //  /* TODO: Exception if email already registered */
-    //  /* TODO: ... */
-    // console.log("Registering user...");
-    // console.log("Name:", name);
-    // console.log("Surname:", surname);
-    // console.log("Email:", email);
-    // console.log("Tlf:", tlf);
 
     const { error } = await supabase
       .from('users')
@@ -166,8 +145,7 @@ export default function RegisterPage() {
             autoComplete="off"
             className={cn(
               "bg-transparent text-slate-100 placeholder-slate-100 border-0",
-              "focus-visible:ring-offset-0 focus-visible:ring-0",
-              ""
+              "focus-visible:ring-offset-0 focus-visible:ring-0"
             )}
             onChange={(e) => setName(e.target.value)}
           />
@@ -180,8 +158,7 @@ export default function RegisterPage() {
             autoComplete="off"
             className={cn(
               "bg-transparent text-slate-100 placeholder-slate-100 border-0",
-              "focus-visible:ring-offset-0 focus-visible:ring-0",
-              ""
+              "focus-visible:ring-offset-0 focus-visible:ring-0"
             )}
             onChange={(e) => setSurname(e.target.value)}
           />
@@ -194,8 +171,7 @@ export default function RegisterPage() {
             autoComplete="off"
             className={cn(
               "bg-transparent text-slate-100 placeholder-slate-100 border-0",
-              "focus-visible:ring-offset-0 focus-visible:ring-0",
-              ""
+              "focus-visible:ring-offset-0 focus-visible:ring-0"
             )}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -208,8 +184,7 @@ export default function RegisterPage() {
             autoComplete="off"
             className={cn(
               "bg-transparent text-slate-100 placeholder-slate-100 border-0",
-              "focus-visible:ring-offset-0 focus-visible:ring-0",
-              ""
+              "focus-visible:ring-offset-0 focus-visible:ring-0"
             )}
             onChange={(e) => setTlf(e.target.value)}
           />
@@ -217,16 +192,56 @@ export default function RegisterPage() {
         </div>
 
         {/* Aceptar condiciones */}
-        <div className="w-4/5 flex items-start"> {/* TODO: Quadrar a dins del width del formulari */}
+        <div className="w-4/5 flex items-start">
           <Checkbox
             id="accept-conditions"
             checked={conditionsAccepted}
             onCheckedChange={() => setConditionsAccepted(!conditionsAccepted)}
             className="w-5 h-5 mr-2 text-vibezgreen-400 bg-transparent border border-slate-100"
           />
-          <label htmlFor="accept-conditions" className="text-sm text-slate-100">
+          <div className="flex flex-col items-start space-y-2">
+            <label htmlFor="accept-conditions" className="text-sm text-slate-100" >
+              Accepto les condicions d&apos;ús i la política de privacitat
+            </label>
+            <div className="flex justify-between space-x-4 w-full">
+              <a
+                href="https://youztalent.com/aviso-legal/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-vibezgreen-400 text-xs"
+              >
+                Termes i Condicions d&apos;ús
+              </a>
+              <a
+                href="https://youztalent.com/politica-de-privacidad/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-vibezgreen-400 text-xs pr-4"
+              >
+                Política de Privacitat
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+        {/* Submit button */}
+        <div className="w-4/5 flex justify-center">
+          <GreenButton
+            text="Registrar Dades"
+            type="submit"
+            onClickFunction={handleRegister}
+          />
+        </div>
+      </div>
+    </main>
+  );
+};
+
+
+{/* <label htmlFor="accept-conditions" className="text-sm text-slate-100">
             Accepto les condicions d&apos;ús i la política de privacitat
-            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}> {/* TODO: ¿¿ Dialog background white or slate ?? */}
+            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
               <DialogTrigger asChild>
                 <button className="underline text-vibezgreen-400">
                   Termes i Condicions d&apos;Ús i Política de Privacitat
@@ -238,7 +253,7 @@ export default function RegisterPage() {
                     Termes i Condicions d&apos;Ús i Política de Privacitat
                   </DialogTitle>
                 </DialogHeader>
-                {/* Contenedor scrollable */}
+                Contenedor scrollable
                 <div className="max-h-60 overflow-y-auto pr-4">
                   <DialogDescription className="text-slate-700">
                     <TermsAndConditions />
@@ -255,19 +270,4 @@ export default function RegisterPage() {
               </DialogContent>
             </Dialog>
 
-          </label>
-        </div>
-
-
-        {/* Submit button */}
-        <div className="w-4/5 flex justify-center">
-          <GreenButton
-            text="Registrar Dades"
-            type="submit"
-            onClickFunction={handleRegister}
-          /> {/* Working well !! */}
-        </div>
-      </div>
-    </main>
-  );
-};
+          </label> */}
