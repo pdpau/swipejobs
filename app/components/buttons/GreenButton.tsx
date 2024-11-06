@@ -18,7 +18,7 @@ export function GreenButton({ text, type, onClickFunction, onTouchFunction }: Pr
             viaColor="via-vibezgreen-300"
             toColor="to-vibezgreen-500"
             textColor="text-slate-800"
-            onClickFunction={onClickFunction}
+            /* onClickFunction={onClickFunction} */
             onTouchFunction={onTouchFunction}
         />
     );

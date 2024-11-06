@@ -24,7 +24,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
         <main>
             <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
                 <DialogTrigger asChild>
-                    <PinkButton text={title} type="button" onClickFunction={() => setDialogOpen(true)} onTouchFunction={() => setDialogOpen(true)} />
+                    <PinkButton text={title} type="button" onTouchFunction={() => setDialogOpen(true)} />
                 </DialogTrigger>
                 <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-800 text-slate-200 rounded-2xl shadow-lg")}>
                     <DialogHeader>
@@ -42,7 +42,7 @@ export function FunctionsAndRequirements({ list, title }: Props) {
                         </DialogDescription>
                     </div>
                     <DialogFooter>
-                        <PinkButton text="Tancar" type="button" onClickFunction={() => setDialogOpen(false)} />
+                        <PinkButton text="Tancar" type="button" onTouchFunction={() => setDialogOpen(false)} />
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

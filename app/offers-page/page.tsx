@@ -179,7 +179,7 @@ export default function OffersPage() {
               REGISTRA&apos;T PER VEURE LES OFERTES
             </h3>
             <div className="text-center mt-6">
-              <GreenButton text="Registrar-se" type="button" onClickFunction={handleChangePage} />
+              <GreenButton text="Registrar-se" type="button" onTouchFunction={handleChangePage} />
             </div>
           </div>
         </main>

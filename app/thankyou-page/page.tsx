@@ -77,7 +77,7 @@ export default function ThankYouPage() {
           T&apos;enviarem el recull d&apos;ofertes que has escollit juntament amb el link per unir-te al nostre <strong>pool de talent</strong>
         </p>
         <div className="text-center mt-6">
-          <GreenButton text="Tornar a la pàgina principal" type="button" onClickFunction={handleGoBack} />
+          <GreenButton text="Tornar a la pàgina principal" type="button" onTouchFunction={handleGoBack} />
         </div>
       </div>
     </main>

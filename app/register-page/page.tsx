@@ -230,7 +230,7 @@ export default function RegisterPage() {
           <GreenButton
             text="Registrar Dades"
             type="submit"
-            onClickFunction={handleRegister}
+            onTouchFunction={handleRegister}
           />
         </div>
       </div>

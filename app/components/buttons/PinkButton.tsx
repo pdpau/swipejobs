@@ -18,7 +18,7 @@ export function PinkButton({ text, type, onClickFunction, onTouchFunction }: Pro
             viaColor="via-vibezpink-500"
             toColor="to-vibezpink-700"
             textColor="text-slate-100"
-            onClickFunction={onClickFunction}
+            /* onClickFunction={onClickFunction} */
             onTouchFunction={onTouchFunction}
         />
     );

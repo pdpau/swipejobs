@@ -30,7 +30,7 @@ export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor,
                     ? `bg-gradient-to-r ${fromColor} ${viaColor} ${toColor}`
                     : `bg-gradient-to-r ${fromColor} ${toColor}`}
             `}
-            onClick={onClickFunction}
+            /* onClick={onClickFunction} */
             onTouchEnd={onTouchFunction}
         >
             {text}
