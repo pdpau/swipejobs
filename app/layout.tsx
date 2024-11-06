@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SwipeJobs",
+  title: "SwipeTalentYouz",
   description: "Swipe until you match with your dream job!",
+  icons: {
+    icon: "/logo_z.svg",
+  }
 };
 
 
