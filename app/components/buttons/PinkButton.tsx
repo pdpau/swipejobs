@@ -9,7 +9,7 @@ type Props = {
     onTouchFunction?: () => void;
 };
 
-export function PinkButton({ text, type, onClickFunction, onTouchFunction }: Props) {
+export function PinkButton({ text, type, onTouchFunction }: Props) {
     return (
         <OwnButton 
             text={text}

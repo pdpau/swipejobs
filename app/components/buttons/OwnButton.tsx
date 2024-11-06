@@ -15,7 +15,7 @@ type Props = {
 };
 
 /* Main component */
-export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor, onClickFunction, onTouchFunction }: Props) {
+export function OwnButton({ text, type, fromColor, viaColor, toColor, textColor, onTouchFunction }: Props) {
     return (
         <button
             type={type}
