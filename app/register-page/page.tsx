@@ -240,34 +240,34 @@ export default function RegisterPage() {
 
 
 {/* <label htmlFor="accept-conditions" className="text-sm text-slate-100">
-            Accepto les condicions d&apos;ús i la política de privacitat
-            <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-              <DialogTrigger asChild>
-                <button className="underline text-vibezgreen-400">
-                  Termes i Condicions d&apos;Ús i Política de Privacitat
-                </button>
-              </DialogTrigger>
-              <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-100", "rounded-2xl shadow-lg")}>
-                <DialogHeader>
-                  <DialogTitle className="text-slate-950">
-                    Termes i Condicions d&apos;Ús i Política de Privacitat
-                  </DialogTitle>
-                </DialogHeader>
-                Contenedor scrollable
-                <div className="max-h-60 overflow-y-auto pr-4">
-                  <DialogDescription className="text-slate-700">
-                    <TermsAndConditions />
-                  </DialogDescription>
-                </div>
+  Accepto les condicions d&apos;ús i la política de privacitat
+  <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+    <DialogTrigger asChild>
+      <button className="underline text-vibezgreen-400">
+        Termes i Condicions d&apos;Ús i Política de Privacitat
+      </button>
+    </DialogTrigger>
+    <DialogContent className={cn("w-11/12 max-w-[450px]", "bg-slate-100", "rounded-2xl shadow-lg")}>
+      <DialogHeader>
+        <DialogTitle className="text-slate-950">
+          Termes i Condicions d&apos;Ús i Política de Privacitat
+        </DialogTitle>
+      </DialogHeader>
+      Contenedor scrollable
+      <div className="max-h-60 overflow-y-auto pr-4">
+        <DialogDescription className="text-slate-700">
+          <TermsAndConditions />
+        </DialogDescription>
+      </div>
 
-                <DialogFooter>
-                  <GreenButton
-                    text="Acceptar"
-                    type="button"
-                    onClickFunction={() => { setConditionsAccepted(true); setDialogOpen(false); }}
-                  />
-                </DialogFooter>
-              </DialogContent>
-            </Dialog>
+      <DialogFooter>
+        <GreenButton
+          text="Acceptar"
+          type="button"
+          onClickFunction={() => { setConditionsAccepted(true); setDialogOpen(false); }}
+        />
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
 
-          </label> */}
+</label> */}

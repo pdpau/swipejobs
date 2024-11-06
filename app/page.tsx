@@ -1,7 +1,7 @@
 "use client"
 
+/* Imports */
 import { cn } from "@/lib/utils";
-
 
 import { GreenButton } from "./components/buttons/GreenButton";
 
@@ -27,8 +27,6 @@ export default function Home() {
           "overflow-auto no-scrollbar"
         )}
       >
-        {/* <Vibez className="absolute top-20 left-1/2 transform -translate-x-1/2 h-24 w-24" /> */}
-        {/* <LogoZ className="absolute top-20 left-1/2 transform -translate-x-1/2 h-24 w-24" /> */}
         <VibezFestival 
           className={cn(
             "absolute top-20 left-1/2 transform -translate-x-1/2", 
@@ -45,11 +43,8 @@ export default function Home() {
           </p>
           <div className="text-center mt-6">
             <Link href="/register-page">
-            <GreenButton text="Registrar-se" type="button" 
-              onClickFunction={handleChangePage}
-              />
+              <GreenButton text="Registrar-se" type="button" onClickFunction={handleChangePage} />
             </Link>
-              
           </div>
         </div>
       </main>
