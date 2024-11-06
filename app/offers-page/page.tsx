@@ -27,11 +27,12 @@ export default function OffersPage() {
 
   /* Variables  */
   //const [offers, setOffers] = useState<OfferType[]>(listOfOffersExample);
-  const [offersBD, setOffersBD] = useState<OfferType[] | undefined>(); // TODO: Revisar type any    // Aquí se guardarán las ofertas
+  const [offersBD, setOffersBD] = useState<OfferType[] | undefined>(); // Aquí se guardarán las ofertas
   const [userId, setUserId] = useState<number | null>(null); // userId as number or null
   const [loading, setLoading] = useState(true); // Estado para mostrar un loader si es necesario
   const [currentIndex, setCurrentIndex] = useState(0); // Index de la oferta actual
-  
+  const [isTransitioning, setIsTransitioning] = useState(false); // Estado para controlar la transición
+
   /* Swipeable */
   const [isSwiping, setIsSwiping] = useState(false);
   const [lastSwipe, setLastSwipe] = useState<string | null>(null);
@@ -106,6 +107,9 @@ export default function OffersPage() {
   const onSwipe = async (direction: string) => {
     if (currentIndex !== null && currentIndex >= 0 && offersBD) { // Comprovem que offersBD no sigui undefined
       // const actualGlobalOffer = localStorage.getItem('globalOfferIndex');
+
+      setIsTransitioning(true); // Start transition
+
       const currentOffer = offersBD[currentIndex];
   
       if (!currentOffer) {
@@ -136,16 +140,16 @@ export default function OffersPage() {
         // Aquí puedes agregar lógica para manejar el "swipe" hacia la izquierda si es necesario
         console.log(`Passed on: ${currentOffer.title}`);
       }
-  
-      // Actualiza el índice y verifica si hay más ofertas
-      const nextIndex = currentIndex + 1;
-      if (typeof window !== "undefined") {
-        localStorage.setItem('globalOfferIndex', nextIndex.toString());
-      }
-  
+
       // Esperar un tiempo antes de proceder
       setTimeout(() => {
-        if (nextIndex > offersBD.length - 1) { // Si no hay más ofertas
+        // Actualiza el índice y verifica si hay más ofertas
+        const nextIndex = currentIndex + 1;
+        if (typeof window !== "undefined") {
+          localStorage.setItem('globalOfferIndex', nextIndex.toString());
+        }
+        // Si no hay más ofertas, redirige a la thank-you page
+        if (nextIndex > offersBD.length - 1) {
           console.log("No more offers");
           if (typeof window !== "undefined") {
             localStorage.setItem('globalOfferIndex', '0');
@@ -153,6 +157,7 @@ export default function OffersPage() {
           router.push("/thankyou-page");
         } else {
           setCurrentIndex(nextIndex);
+          setIsTransitioning(false); // End transition
         }
       }, 500);
     }
@@ -195,7 +200,7 @@ export default function OffersPage() {
             <p className="text-slate-100 text-xl font-bold">Carregant ofertes...</p>
           ) : (
             currentIndex !== null && currentIndex >= 0 && offersBD && ( // Comprovem que offersBD no sigui undefined
-              <div className="w-screen h-screen flex flex-col justify-center items-center">
+              <div className={`w-screen h-screen flex flex-col justify-center items-center transform transition-all duration-500 ease-in-out ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
                 <JobOffer
                   dbOffer={offersBD[currentIndex]}
                   onSwipe={onSwipe}
