@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+import { Analytics } from "@vercel/analytics/react";
+
 export const metadata: Metadata = {
   title: "SwipeTalentYouz",
   description: "Swipe until you match with your dream job!",
@@ -19,6 +21,7 @@ export default function RootLayout({ children, }: Readonly<{children: React.Reac
         {/* Renderizar el contenido de cada página */}
         <div className="relative">
           {children}
+          <Analytics />
         </div>
 
         {/* Estilo de la ola */}
