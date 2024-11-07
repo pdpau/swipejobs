@@ -102,23 +102,23 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
                 </div>
 
                 {/* Detalles de la oferta */}
-                <div className={cn("h-[15%] px-4 pt-2 space-x-1", "flex justify-around items-center", "text-md font-medium")}>
-                    <div className="flex items-center">
+                <div className={cn("h-[15%] px-4 pt-2 space-x-2", "flex justify-between items-stretch", "text-md font-medium")}>
+                    <div className="flex items-center w-1/3">
                         <i className="mr-1"><TiLocation /></i>
                         <span className="text-slate-400">{offer.location}</span>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center w-1/3">
                         <i className="mr-1"><FaFileContract /></i>
                         <span className="text-slate-400">{offer.contractType}</span>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center w-1/3">
                         <i className="mr-1"><BsFillClockFill /></i>
                         <span className="text-slate-400">{offer.schedule}</span>
                     </div>
                 </div>
 
                 {/* Descripción de la empresa y la oferta */}
-                <div className={cn("h-[55%] px-6 py-2 mb-2", "flex flex-col")}>
+                <div className={cn("h-[55%] px-6 py-2 mb-2", "flex flex-col", "text-justify whitespace-pre-line")}>
                     <h3 className="text-slate-50 text-xl font-bold mb-1">Descripció</h3>
                     <p className="text-md font-medium leading-relaxed text-slate-300 overflow-y-auto no-scrollbar">
                         {offer.description}

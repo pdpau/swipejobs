@@ -43,7 +43,7 @@ export function PaginationDots({ totalOffers, currentIndex }: Props) {
                         /* El punto actual con número y borde */
                         <div 
                             className={cn(
-                                "w-[48px] h-[32px]", 
+                                "w-[52px] h-[34px]", 
                                 "flex justify-center items-center", 
                                 "bg-vibezgreen-400", 
                                 "border-2 border-vibezgreen-500 rounded-lg", 
