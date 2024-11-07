@@ -117,7 +117,11 @@ export default function RegisterPage() {
 
   return (
     <main className={cn("h-screen w-screen", "flex justify-center items-center", "bg-slate-950")}>
-      <div><Toaster /></div>
+      <div><Toaster
+        toastOptions={{
+          duration: 3500
+        }}
+      /></div>
 
       <LogoZ
         className={cn(
