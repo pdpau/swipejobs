@@ -94,15 +94,15 @@ export function JobOffer({ dbOffer, onSwipe, onSwipeStart, onSwipeEnd, isSwiping
             )}
             key={offer.id}
         >
-            <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-slate-100")}> {/* TODO: Ajustar mida de la lletra segons hi capiga al div */}
+            <div className={cn("w-full h-full max-w-[350px] max-h-[600px]", "flex flex-col justify-between", "text-slate-100")}>
                 {/* Logo o nombre de la empresa */}
-                <div className={cn("h-[15%] px-6 py-1", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
-                    <h2 className={cn("text-start text-xl font-extrabold line-clamp-2 text-ellipsis", "w-[60%] max-w-[60%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
-                    <span className={cn("text-end text-lg font-bold line-clamp-2 text-ellipsis", "w-[40%] max-w-[40%]", "text-slate-400")}>{offer.title}</span>
+                <div className={cn("h-[18%] px-6 py-1", "flex justify-between items-center", "bg-slate-600 rounded-t-3xl")}>
+                    <h2 className={cn("text-start text-lg font-extrabold line-clamp-2 text-ellipsis", "w-[48%] max-w-[48%]", "text-slate-50")}>{offer.companyName}</h2> {/* [clamp(1rem, 5vw, 3rem)] */}
+                    <span className={cn("text-end text-lg font-bold line-clamp-2 text-ellipsis", "w-[52%] max-w-[52%]", "text-slate-400")}>{offer.title}</span>
                 </div>
 
                 {/* Detalles de la oferta */}
-                <div className={cn("h-[15%] px-4 pt-2 space-x-2", "flex justify-between items-stretch", "text-md font-medium")}>
+                <div className={cn("h-[12%] px-4 pt-2 space-x-2", "flex justify-between items-stretch", "text-md font-medium")}>
                     <div className="flex items-center w-1/3">
                         <i className="mr-1"><TiLocation /></i>
                         <span className="text-slate-400">{offer.location}</span>
