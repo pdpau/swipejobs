@@ -30,7 +30,7 @@ SwipeTalentYouz is a Next.js application that allows users to browse job offers 
 ### Installation
 1. Clone the repository
 ```bash
-git clone [repository-url]
+git clone https://github.com/pdpau/swipejobs.git
 ```
 
 2. Install dependencies
